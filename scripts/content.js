@@ -9,6 +9,7 @@ elements.forEach(element => {
   element.style.color = '#00660C'; // Change the text color to red (example)
   element.style.fontWeight = 'bold'; // 
   element.style.backgroundColor = '#fff'
-  element.style.padding = "10px";
+  element.style.padding = "0px 10px";
   element.style.border = '2px solid #00660C';
+  element.style.display = 'block';
 });
