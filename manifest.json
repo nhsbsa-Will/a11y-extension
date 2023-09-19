@@ -9,13 +9,16 @@
     "48": "images/eye-48.png",
     "128": "images/eye-128.png"
   },
-  "content_scripts": [
-    {
-      "js": ["scripts/content.js"],
-      "matches": [
-        "https://*/*",
-        "http://*/*"
-      ]
+  "background": {
+    "service_worker": "scripts/background.js"
+  },
+  "action": {
+    "default_icon": {
+      "16": "images/eye-16.png",
+      "32": "images/eye-32.png",
+      "48": "images/eye-48.png",
+      "128": "images/eye-128.png"
     }
-  ]
+  },
+  "permissions": ["activeTab", "scripting"]
 }
