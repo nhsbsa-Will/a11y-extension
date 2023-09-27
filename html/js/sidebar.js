@@ -1,20 +1,20 @@
 let btn = document.getElementById('btn');
-let p = document.getElementById('p');
+let p = document.getElementById('styles_switch');
 
-btn.addEventListener('click', () => {
+p.addEventListener('click', () => {
 
-    if(p.innerText != "Showing hidden text") {
+    if(p.checked === true) {
         (async () => {
             const response = await chrome.runtime.sendMessage({message: "showHidden"});
             // do something with response here, not outside the function
-            p.innerText = response.showText;
+            // p.innerText = response.showText;
         })();
     }else{
         (async () => {
             const response = await chrome.runtime.sendMessage({message: "hideHidden"});
             // do something with response here, not outside the function
-            p.innerText = response.showText;
-            alert("remove css??");
+            // p.innerText = response.showText;
+            // alert("remove css??");
         })();
     }
 });
