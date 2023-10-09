@@ -17,10 +17,41 @@
     </header>
 
     <div class="box">
+        <input type="checkbox" id="show_title" name="show-title" class="switch-input ext-hidden" >
+        <label for="show_title" class="switch-label">Show page title text:</label>
+        <div class="on-off-spans">
+            <span class="toggle-off" aria-hidden="true">OFF</span>
+            <span class="toggle-on" aria-hidden="true">ON</span>
+        </div>
+        <p><strong>Page title:</strong><span id="ext_page_title"></span></p>
+    </div>
+
+    <div class="box">
+        <input type="checkbox" id="show_language" name="show-language" class="switch-input ext-hidden" >
+        <label for="show_title" class="switch-label">Show language:</label>
+        <div class="on-off-spans">
+            <span class="toggle-off" aria-hidden="true">OFF</span>
+            <span class="toggle-on" aria-hidden="true">ON</span>
+        </div>
+            <p><strong>Page language:</strong><span id="page_language"></span></p>
+    </div>
+
+    <div class="box">
+        <input type="checkbox" id="show_skip_link" name="show-skip-link" class="switch-input ext-hidden" >
+        <label for="show_skip_link" class="switch-label">Show skip link:</label>
+        <div class="on-off-spans">
+            <span class="toggle-off" aria-hidden="true">OFF</span>
+            <span class="toggle-on" aria-hidden="true">ON</span>
+        </div>
+    </div>
+
+    <div class="box">
         <input type="checkbox" id="styles_switch" name="set-hidden-text" class="switch-input ext-hidden" >
         <label for="styles_switch" class="switch-label">Show hidden text:</label>
-        <span class="toggle-off" aria-hidden="true">OFF</span>
-        <span class="toggle-on" aria-hidden="true">ON</span>
+        <div class="on-off-spans">
+            <span class="toggle-off" aria-hidden="true">OFF</span>
+            <span class="toggle-on" aria-hidden="true">ON</span>
+        </div>
     </div>
 
 <!--    <div class="nhsuk-tabs" data-module="nhsuk-tabs">-->

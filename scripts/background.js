@@ -5,7 +5,6 @@ chrome.runtime.onInstalled.addListener(() => {
 });
 
 const alwaysActive = true;
-var tabURL;
 
 // Define a variable to track whether content.js is enabled
 let isContentJsEnabled = false;
@@ -19,13 +18,10 @@ chrome.action.onClicked.addListener(async (tab) => {
     const badgeText = isContentJsEnabled ? 'ON' : 'OFF';
     await chrome.action.setBadgeText({ tabId: tab.id, text: badgeText });
 
+    let tempResults;
+
     // Execute or stop content.js based on the state
     if (isContentJsEnabled) {
-
-      // chrome.scripting.executeScript({
-      //   target: { tabId: tab.id, allFrames : true },
-      //   files: ["scripts/content.js"],
-      // });
 
       // For Iframe pop out
       chrome.scripting.executeScript({
@@ -52,6 +48,8 @@ chrome.action.onClicked.addListener(async (tab) => {
         },
       });
 
+      const functionToExecute = () => { document.title };
+
       // message system to listen hidden button being toggle clicked
       chrome.runtime.onMessage.addListener(
           function(request, sender, sendResponse) {
@@ -74,8 +72,20 @@ chrome.action.onClicked.addListener(async (tab) => {
               });
               sendResponse({showText: "Not showing hidden text"});
             }
+
+            if (request.message === "showHtmlTitle"){
+
+              chrome.scripting.executeScript({
+                target: { tabId: tab.id, allFrames : true },
+                files: ["scripts/showTitle.js"]
+              })
+            }
+            if (request.message === "hideHtmlTitle"){
+              sendResponse({showText: "Not showing *Title* text"});
+            }
           }
       );
+
     } else {
       // Remove content.js when the user turns the extension off
       chrome.scripting.executeScript({
@@ -87,3 +97,5 @@ chrome.action.onClicked.addListener(async (tab) => {
     }
   }
 });
+
+// function getTitle() { return document.title; }
