@@ -98,6 +98,24 @@ chrome.action.onClicked.addListener(async (tab) => {
               });
             }
 
+            if (request.message === "showImageAltText"){
+              chrome.scripting.executeScript({
+                target: { tabId: tab.id, allFrames : true },
+                files: ["scripts/showImageAltText.js"]
+              });
+              chrome.scripting.insertCSS({
+                target: { tabId: tab.id, allFrames : true },
+                files: ["css/panel.css"]
+              });
+            }
+            if (request.message === "hideImageAltText"){
+              chrome.scripting.executeScript({
+                target: { tabId: tab.id, allFrames : true },
+                files: ["scripts/removeImageAltText.js"]
+              });
+              // sendResponse({showText: "Not showing *Title* text"});
+            }
+
           }
       );
 

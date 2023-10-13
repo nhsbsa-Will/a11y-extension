@@ -10,6 +10,9 @@ let pageTitle = document.getElementById('ext_page_title');
 let showButtons = document.getElementById('show_data_module');
 let buttonDataModule = document.getElementById('ext_data_module');
 
+let showImageAltText = document.getElementById('show_image_alt');
+let imageAltText = document.getElementById('ext_image_alt');
+
 
 //For show hidden text
 showStyleSwitch.addEventListener('click', () => {
@@ -108,5 +111,33 @@ showButtons.addEventListener('click', () => {
                     buttonDataModule.innerHTML = "";
                 }
             })
+    }
+});
+
+//For show alt image text
+showImageAltText.addEventListener('click', () => {
+
+    if(showImageAltText.checked === true) {
+        (async () => {
+            const response = await chrome.runtime.sendMessage({message: "showImageAltText"});
+        })();
+        console.log("clicked image alt text")
+        // chrome.runtime.onMessage.addListener(
+        //     function(request, sender, sendResponse) {
+        //         if (request.showMessage){
+        //             imageAltText.innerHTML += "<br/><h5 class='nhs-bright-blue'>"+request.showMessage+"</h5>";
+        //         }
+        //     })
+    }else{
+        (async () => {
+            const response = await chrome.runtime.sendMessage({message: "hideImageAltText"});
+        })();
+        console.log("clicked image alt text remove")
+        // chrome.runtime.onMessage.addListener(
+        //     function(request, sender, sendResponse) {
+        //         if (request.showMessage){
+        //             imageAltText.innerHTML = "";
+        //         }
+        //     })
     }
 });

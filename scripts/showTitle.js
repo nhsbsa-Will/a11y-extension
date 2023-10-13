@@ -17,7 +17,6 @@ function showHtmlPageTitle() {
     }
 
 
-
     // put all link on :focus and see what look like - cant be done for all element :( only one at a time I think focus()
 
     //mc10 - errors - search id > find aria describe by and if present ***
@@ -48,9 +47,6 @@ function showHtmlPageTitle() {
     //mc19 - mouse operations - see if possible to check javascript for mouse events and what they do?
 
 
-    //mc20 - text in images
-    const allImages = document.getElementsByTagName("img");
-    imagesShowAltText(allImages);
     //mc21 - hover over pop-ups = all content for mouse clicking possibly javascript check
     //mc22 - auto audio
     //mc23 - touch gestures (O) (optional)
@@ -61,10 +57,12 @@ function showHtmlPageTitle() {
     //mc27 - page titles
     const htmlTitle = document.title;
     let message;
-    (htmlTitle) ? message = htmlTitle : message="No title could be found"
+    (htmlTitle) ? message = htmlTitle : message = "No title could be found"
     console.log("Html page title:", message);
     //Send message to sidebar.js filer where it's listening to it
-    (async () => {await chrome.runtime.sendMessage({showTitleMessage: message})})();
+    (async () => {
+        await chrome.runtime.sendMessage({showTitleMessage: message})
+    })();
 
 
     //mc29 - website help features
@@ -78,31 +76,23 @@ function showHtmlPageTitle() {
     const inputsPresent = document.getElementsByTagName("input");
     for (const input of inputsPresent) {
         let isMaxlenghtPresent = input.getAttribute("maxlength");
-        (isMaxlenghtPresent) ? console.log("html input has max length: " + input) : null ;
+        (isMaxlenghtPresent) ? console.log("html input has max length: " + input) : null;
 
         let isMinlengthPresent = input.getAttribute("minlength");
-        (isMinlengthPresent) ? console.log("html input has min length: " + input) : null ;
+        (isMinlengthPresent) ? console.log("html input has min length: " + input) : null;
     }
 
     // In line style ="" check show inline style
     const inlineStyles = document.querySelectorAll("[style]");
     console.log("Html page --- Inline styles are: ", inlineStyles);
-    inlineStyles.forEach( (inlineStyle) => {
-        console.log("Html page --- Inline style is: ", inlineStyle ," and style = ", inlineStyle.getAttribute("style"));
+    inlineStyles.forEach((inlineStyle) => {
+        console.log("Html page --- Inline style is: ", inlineStyle, " and style = ", inlineStyle.getAttribute("style"));
     });
-
 
     console.log("Html page --- Labels are: ", pageLabels);
     console.log("Html page --- Number of a links: ", pageHrefs.length);
     console.log("Html page --- Links are: ", pageHrefs);
-    console.log("Html page --- Errors are: ", (isErrorsClass.length>0) ? isErrorsClass : "None could be found");
-    console.log("Html page --- Tab indexes are: ", (elementsWithTabindex.length>0) ? elementsWithTabindex : "None could be found");
-    console.log("Html page --- Images are: ", (allImages.length>0) ? allImages : "None could be found");
+    console.log("Html page --- Errors are: ", (isErrorsClass.length > 0) ? isErrorsClass : "None could be found");
+    console.log("Html page --- Tab indexes are: ", (elementsWithTabindex.length > 0) ? elementsWithTabindex : "None could be found");
 
-}
-function  imagesShowAltText(allImages) {
-
-    for (let i = 0; i < allImages.length; i++) {
-        console.log("Html page --- Image "+[i]+" alt: ", allImages[i].getAttribute('alt'), allImages[i]);
-    }
 }

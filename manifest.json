@@ -29,7 +29,9 @@
         "scripts/showHiddenText.js" ,
         "scripts/showTitle.js" ,
         "scripts/showSkipLink.js",
-        "scripts/checkButtons.js"
+        "scripts/checkButtons.js",
+        "scripts/showImageAltText.js",
+        "scripts/removeImageAltText.js"
       ],
       "matches": ["<all_urls>"]
     }

@@ -221,3 +221,9 @@ header {
 .nhs-red{
     color: #ff1a00;
 }
+
+h5.ext-alt-img {
+    color: #ff1a00;
+    padding: 10px;
+    margin: 0;
+}
