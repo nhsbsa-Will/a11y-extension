@@ -1,37 +1,39 @@
 showHtmlPageTitle()
 function showHtmlPageTitle() {
 
-    //mc1 - Screen Orientation - not needed
-    const screenOrentation = screen.orientation.type;
-    //mc2 - Navigation - not needed
-    const pageNavigationTag = document.getElementsByTagName("nav");
-    //mc3 - Language - not needed
-    const pageLanguage = document.documentElement.lang;
-    //mc4 - Skip link
-    const isSkipLinkClass = document.getElementsByClassName("nhsuk-skip-link");
-    let skipLinkMessage;
-    (isSkipLinkClass) ? skipLinkMessage = isSkipLinkClass : skipLinkMessage = "No skip link on page"
-    //mc5 - Headings - not needed done in wave
-    // headings();
-    //mc6 - keyboard only - not needed
-    //mc7 - zoom - not needed
-
     //mc8 - labels - show for links to help developers ***
     const pageLabels = document.getElementsByTagName("label");
 
-    //mc9 - links - if link has button class > needs role="button" data-module="nhs-module*"
-    // check if links are table ask testing community
-    // put all link on :fours and see what look like
-    const pageAhrefs = document.getElementsByTagName("a");
+    //mc9 - links
+    const pageHrefs = document.getElementsByTagName("a");
+    for (const element of pageHrefs) {
+        // if a href has button class *** is button class same in all??
+        if (element.getElementsByClassName("")) {
+            // check a href has aria == role="button"
+            let hrefAriaRole = element.getAttribute("role");
+            // (hrefAriaRole === "button") ? console.log("Html a href does have data-module :" + buttonDataModule)
+            //     : console.log("Html button does not have data-module :" + element);
+        }
+    }
 
+
+
+    // put all link on :focus and see what look like - cant be done for all element :( only one at a time I think focus()
 
     //mc10 - errors - search id > find aria describe by and if present ***
     const isErrorsClass = document.getElementsByClassName("nhsuk-form-group--error");
 
-    //mc11 - use of colours
-    //mc12 - url's = keba case and no (query params ?) e.g. https://service-manual.nhs.uk/design-system/components/text-input
+    //mc11 - use of colours ( not to rely on only of use of color when a state change happens) ??? Wave does this via desaturation ?
+    //could use css check and check psuedo elements for border, image maybe ???
 
-    //mc13 - tab indexes - show :focus on tab able
+    //mc12 - url's = keba case and no (query params ?) e.g. https://service-manual.nhs.uk/design-system/components/text-input
+    for (const element of pageHrefs) {
+        let hrefUrlString = element.getAttribute("href");
+        // console.log("html href "+[i]+" url:" +pageHrefs[i]);
+    }
+
+
+    //mc13 - tab indexes - done in wave order tab - show :focus on tab able
     const elementsWithTabindex = document.querySelectorAll('[tabindex]');
     // elmntsWithTabindex.forEach( elmnt => {
     //     // Do something with that one element
@@ -42,20 +44,29 @@ function showHtmlPageTitle() {
     //mc16 - auto complete and redundant entry
     //mc17 - flash animations (optional)
     //mc18 - keyboard shortcuts (optional)
-    //mc19 - mouse operations
+
+    //mc19 - mouse operations - see if possible to check javascript for mouse events and what they do?
+
+
     //mc20 - text in images
     const allImages = document.getElementsByTagName("img");
-    // imagesShowAltText(allImages);
+    imagesShowAltText(allImages);
     //mc21 - hover over pop-ups = all content for mouse clicking possibly javascript check
     //mc22 - auto audio
     //mc23 - touch gestures (O) (optional)
     //mc24 - motion gestures (O) (optional)
     //mc25 - styles off = wave
     //mc26 - instructions
+
     //mc27 - page titles
     const htmlTitle = document.title;
     let message;
-    //mc28 - non java script = quick javascript switcher
+    (htmlTitle) ? message = htmlTitle : message="No title could be found"
+    console.log("Html page title:", message);
+    //Send message to sidebar.js filer where it's listening to it
+    (async () => {await chrome.runtime.sendMessage({showTitleMessage: message})})();
+
+
     //mc29 - website help features
     //mc30 - authentication
     //mc31 - draggable movements
@@ -63,56 +74,35 @@ function showHtmlPageTitle() {
     //mc31 - focus not obscured
 
 
-    (htmlTitle) ? message= htmlTitle : message="No title could be found"
-    console.log("Html page title:", message);
+    //Check input fields if there is a max or min length
+    const inputsPresent = document.getElementsByTagName("input");
+    for (const input of inputsPresent) {
+        let isMaxlenghtPresent = input.getAttribute("maxlength");
+        (isMaxlenghtPresent) ? console.log("html input has max length: " + input) : null ;
 
-    (async () => {
-       await chrome.runtime.sendMessage({message: message});
-        // do something with response here, not outside the function
-        // p.innerText = response.showText;
-        // alert("remove css??");
-    })();
+        let isMinlengthPresent = input.getAttribute("minlength");
+        (isMinlengthPresent) ? console.log("html input has min length: " + input) : null ;
+    }
 
-    // chrome.runtime.onMessage.addListener(
-    //     function(request, sender, sendResponse) {
-    //         // let tempResults;
-    //         if (request.message === "titleText"){
-    //               sendResponse({showText: message});
-    //         }
-    //     }
-    // );
+    // In line style ="" check show inline style
+    const inlineStyles = document.querySelectorAll("[style]");
+    console.log("Html page --- Inline styles are: ", inlineStyles);
+    inlineStyles.forEach( (inlineStyle) => {
+        console.log("Html page --- Inline style is: ", inlineStyle ," and style = ", inlineStyle.getAttribute("style"));
+    });
 
-    // console.log("Html page iframes --- titles are: ", pageTitle);
-    // console.log("Html page --- Screen orientation is: ", screenOrentation);
-    // console.log("Html page --- Navigation is: ", pageNavigationTag);
-    // console.log("Html page --- language is: ", pageLanguage);
-    console.log("Html page --- Is skip link present: ", skipLinkMessage);
+
     console.log("Html page --- Labels are: ", pageLabels);
-    console.log("Html page --- Links are: ", pageAhrefs);
+    console.log("Html page --- Number of a links: ", pageHrefs.length);
+    console.log("Html page --- Links are: ", pageHrefs);
     console.log("Html page --- Errors are: ", (isErrorsClass.length>0) ? isErrorsClass : "None could be found");
     console.log("Html page --- Tab indexes are: ", (elementsWithTabindex.length>0) ? elementsWithTabindex : "None could be found");
     console.log("Html page --- Images are: ", (allImages.length>0) ? allImages : "None could be found");
 
-    return message;
 }
 function  imagesShowAltText(allImages) {
-    allImages.forEach((image, i)=> {
-        console.log("Html page --- Images"+[i]+" alt: ", image.getAttribute('alt'));
-        // elem.innerHTML = image.getAttribute('alt');
-    });
-}
 
-function headings() {
-    var h = ["h1", "h2", "h3", "h4", "h5", "h6"];
-    var headings = [];
-    for (var i = 0; i < h.length; i++) {
-        if (document.getElementsByTagName(h[i])) {
-            headings[i] = document.querySelector(h[i]);
-            if (headings[i]) {
-                console.log("h"+(i+1)+": " + headings[i].textContent);
-            }
-        } else {
-            alert(h+(i+1) + "doesn't exist");
-        }
+    for (let i = 0; i < allImages.length; i++) {
+        console.log("Html page --- Image "+[i]+" alt: ", allImages[i].getAttribute('alt'), allImages[i]);
     }
 }

@@ -6,12 +6,12 @@ chrome.runtime.onInstalled.addListener(() => {
 
 const alwaysActive = true;
 
-// Define a variable to track whether content.js is enabled
+// Define a variable to track whether showHiddenText.js is enabled
 let isContentJsEnabled = false;
 
 chrome.action.onClicked.addListener(async (tab) => {
   if (alwaysActive) {
-    // Toggle the content.js state
+    // Toggle the showHiddenText.js state
     isContentJsEnabled = !isContentJsEnabled;
 
     // Set the action badge based on the state
@@ -20,7 +20,7 @@ chrome.action.onClicked.addListener(async (tab) => {
 
     let tempResults;
 
-    // Execute or stop content.js based on the state
+    // Execute or stop showHiddenText.js based on the state
     if (isContentJsEnabled) {
 
       // For Iframe pop out
@@ -53,24 +53,16 @@ chrome.action.onClicked.addListener(async (tab) => {
       // message system to listen hidden button being toggle clicked
       chrome.runtime.onMessage.addListener(
           function(request, sender, sendResponse) {
-            if (request.message === "showHidden"){
+            if (request.message === "showHidden" || request.message === "hideHidden"){
               chrome.scripting.executeScript({
                 target: { tabId: tab.id, allFrames : true },
-                files: ["scripts/content.js"],
+                files: ["scripts/showHiddenText.js"],
               });
               // insert css to show hidden text and other stuff
               chrome.scripting.insertCSS({
                 target: { tabId: tab.id, allFrames : true },
                 files: ["css/panel.css"]
               });
-              sendResponse({showText: "Showing hidden text"});
-            }
-            if (request.message === "hideHidden"){
-              chrome.scripting.executeScript({
-                target: { tabId: tab.id, allFrames : true },
-                files: ["scripts/removeClass.js"],
-              });
-              sendResponse({showText: "Not showing hidden text"});
             }
 
             if (request.message === "showHtmlTitle"){
@@ -83,11 +75,34 @@ chrome.action.onClicked.addListener(async (tab) => {
             if (request.message === "hideHtmlTitle"){
               sendResponse({showText: "Not showing *Title* text"});
             }
+
+            if (request.message === "showSkipLink" || request.message === "hideSkipLink"){
+              chrome.scripting.executeScript({
+                target: { tabId: tab.id, allFrames : true },
+                files: ["scripts/showSkipLink.js"]
+              });
+              chrome.scripting.insertCSS({
+                target: { tabId: tab.id, allFrames : true },
+                files: ["css/panel.css"]
+              });
+            }
+
+            if (request.message === "showButtons" || request.message === "hideButtons"){
+              chrome.scripting.executeScript({
+                target: { tabId: tab.id, allFrames : true },
+                files: ["scripts/checkButtons.js"]
+              });
+              chrome.scripting.insertCSS({
+                target: { tabId: tab.id, allFrames : true },
+                files: ["css/panel.css"]
+              });
+            }
+
           }
       );
 
     } else {
-      // Remove content.js when the user turns the extension off
+      // Remove showHiddenText.js when the user turns the extension off
       chrome.scripting.executeScript({
         target: { tabId: tab.id },
         function: () => {

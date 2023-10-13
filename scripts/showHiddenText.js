@@ -1,5 +1,5 @@
-Handler();
-function Handler() {
+showHiddenText();
+function showHiddenText() {
     // Select all elements with the class 'nhsuk-u-visually-hidden'
     const elements = document.querySelectorAll('.nhsuk-u-visually-hidden');
     // Iterate through the selected elements

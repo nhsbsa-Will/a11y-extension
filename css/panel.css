@@ -204,3 +204,20 @@ header {
     /*white-space: nowrap !important;*/
     width: 1px !important;
 }
+
+/* show skip link */
+.ext_showSkipLink{
+    margin-left: 380px;
+    left: 0;
+    position: unset !important;
+}
+
+.nhs-green {
+    color: #cbead8;
+}
+.nhs-bright-blue {
+    color: #005eb8;
+}
+.nhs-red{
+    color: #ff1a00;
+}

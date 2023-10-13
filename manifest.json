@@ -25,12 +25,11 @@
       "resources": ["css/panel.css",
         "css/style.min.css",
         "images/NHSBSA-logo.png",
-        "icon-128.png",
-        "icon-34.png",
         "html/panel.html",
-        "scripts/content.js" ,
+        "scripts/showHiddenText.js" ,
         "scripts/showTitle.js" ,
-        "scripts/removeClass.js"
+        "scripts/showSkipLink.js",
+        "scripts/checkButtons.js"
       ],
       "matches": ["<all_urls>"]
     }

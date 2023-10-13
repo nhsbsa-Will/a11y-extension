@@ -1,11 +1,19 @@
-toggleClass();
-function toggleClass() {
-    // Select all elements with the class 'redBold'
-    const elements = document.querySelectorAll('.ext_showhidden');
+// let className='';
+// if(className!=''){
+//     className='.ext_showSkipLink';
+// }
+
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+    toggleClass(request.removeClass);
+    console.log('className= ',request.removeClass);
+});
+// toggleClass(className);
+function toggleClass(className) {
+    const elements = document.querySelectorAll(className);
     // Iterate through the selected elements
     elements.forEach(element => {
-        // Remove redBold hidden class
-        element.classList.remove('ext_showhidden')
+        element.classList.toggle(className.slice(1));
     });
+
     console.log("Script excuted css toggle", chrome.tabId);
 }
