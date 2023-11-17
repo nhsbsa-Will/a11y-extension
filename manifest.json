@@ -31,7 +31,8 @@
         "scripts/showSkipLink.js",
         "scripts/checkButtons.js",
         "scripts/showImageAltText.js",
-        "scripts/removeImageAltText.js"
+        "scripts/removeImageAltText.js",
+        "scripts/buttonSpacing.js"
       ],
       "matches": ["<all_urls>"]
     }

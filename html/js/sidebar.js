@@ -13,6 +13,8 @@ let buttonDataModule = document.getElementById('ext_data_module');
 let showImageAltText = document.getElementById('show_image_alt');
 let imageAltText = document.getElementById('ext_image_alt');
 
+let showButtonSpacing = document.getElementById('show_button_spacing');
+
 
 //For show hidden text
 showStyleSwitch.addEventListener('click', () => {
@@ -137,6 +139,23 @@ showImageAltText.addEventListener('click', () => {
         //     function(request, sender, sendResponse) {
         //         if (request.showMessage){
         //             imageAltText.innerHTML = "";
+        //         }
+        //     })
+    }
+});
+
+//For show button spacing
+showButtonSpacing.addEventListener('click', () => {
+
+    if(showButtonSpacing.checked === true) {
+        (async () => {
+            const response = await chrome.runtime.sendMessage({message: "showButtonSpacing"});
+        })();
+        console.log("clicked show button spacing")
+        // chrome.runtime.onMessage.addListener(
+        //     function(request, sender, sendResponse) {
+        //         if (request.showMessage){
+        //             imageAltText.innerHTML += "<br/><h5 class='nhs-bright-blue'>"+request.showMessage+"</h5>";
         //         }
         //     })
     }

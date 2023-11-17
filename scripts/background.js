@@ -116,6 +116,18 @@ chrome.action.onClicked.addListener(async (tab) => {
               // sendResponse({showText: "Not showing *Title* text"});
             }
 
+
+            if (request.message === "showButtonSpacing"){
+              chrome.scripting.executeScript({
+                target: { tabId: tab.id, allFrames : true },
+                files: ["scripts/buttonSpacing.js"]
+              });
+              chrome.scripting.insertCSS({
+                target: { tabId: tab.id, allFrames : true },
+                files: ["css/panel.css"]
+              });
+            }
+
           }
       );
 
