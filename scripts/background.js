@@ -23,17 +23,30 @@ chrome.action.onClicked.addListener(async (tab) => {
     // Execute or stop showHiddenText.js based on the state
     if (isContentJsEnabled) {
 
+      // Check all manual test first
+
+      //test mc1
+
+      // //test mc3
+      // chrome.scripting.executeScript({
+      //   target: { tabId: tab.id, allFrames : true },
+      //   files: ["scripts/showLang.js"]
+      // });
+      // //test mc4
+      // chrome.scripting.executeScript({
+      //   target: { tabId: tab.id, allFrames : true },
+      //   files: ["scripts/showSkipLink.js"]
+      // });
+
       // For Iframe pop out
       chrome.scripting.executeScript({
         target: {tabId: tab.id},
         func: () => {
           const oldIframe = document.getElementById('cm-frame');
-
           if (oldIframe) {
             oldIframe.remove();
             return;
           }
-
           const iframe = document.createElement('iframe');
           iframe.setAttribute('id', 'cm-frame');
           iframe.setAttribute(
@@ -74,6 +87,13 @@ chrome.action.onClicked.addListener(async (tab) => {
             }
             if (request.message === "hideHtmlTitle"){
               sendResponse({showText: "Not showing *Title* text"});
+            }
+
+            if (request.message === "showLanguage") {
+              chrome.scripting.executeScript({
+                target: {tabId: tab.id, allFrames: true},
+                files: ["scripts/showLang.js"]
+              });
             }
 
             if (request.message === "showSkipLink" || request.message === "hideSkipLink"){
@@ -126,6 +146,29 @@ chrome.action.onClicked.addListener(async (tab) => {
                 target: { tabId: tab.id, allFrames : true },
                 files: ["css/panel.css"]
               });
+            }
+
+
+            if (request.message === "showTabIndex" || request.message === "hideTabIndex"){
+              chrome.scripting.executeScript({
+                target: { tabId: tab.id, allFrames : true },
+                files: ["scripts/checkTabIndex.js"]
+              });
+              chrome.scripting.insertCSS({
+                target: { tabId: tab.id, allFrames : true },
+                files: ["css/panel.css"]
+              });
+            }
+
+            if (request.message === "showLabel"){
+              chrome.scripting.executeScript({
+                target: { tabId: tab.id, allFrames : true },
+                files: ["scripts/showLabel.js"]
+              });
+              // chrome.scripting.insertCSS({
+              //   target: { tabId: tab.id, allFrames : true },
+              //   files: ["css/panel.css"]
+              // });
             }
 
           }

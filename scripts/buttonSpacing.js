@@ -4,6 +4,8 @@ function buttonSpacing() {
 
     //wcag 2.2 button spacing - to check that a button or link is 24px away from the next element
     const allButtons = document.getElementsByTagName("button");
+    const buttonSpacing = 24 *2;
+
     for (const element of allButtons) {
         const cssObj = window.getComputedStyle(element, null);
 
@@ -19,14 +21,10 @@ function buttonSpacing() {
         console.log("Button" + element.innerHTML + "Padding :" + padding);
         console.log("Button" + element.innerHTML + "Margin :" + margin);
 
-
-        // const element = document.getElementById("HTML element");
+        // Set up the box overlay for the button
         const rect = element.getBoundingClientRect();
         console.log("Width: " + rect.width + "px");
         console.log("Height: " + rect.height + "px");
-
-        let buttonSpacing = 24*2;
-
 
         let boxTop = 0, boxLeft = 0, boxOffsetParent;
         let box = document.createElement("div");
@@ -36,38 +34,18 @@ function buttonSpacing() {
         box.style.height = rect.height+ buttonSpacing + "px";
         box.style.position = "absolute";
 
+        //Position the box
         let boxMargTopPx = parseInt(paddingTop) + parseInt(paddingBottom) + parseInt(element.offsetTop ) + (rect.height/2) + (buttonSpacing/2);
         box.style.marginTop = "-"+boxMargTopPx.toString()+"px";
-
         let boxMargLeftPx = buttonSpacing/2;
         box.style.marginLeft = "-"+boxMargLeftPx.toString()+"px";
 
+        //Add the box
         box.classList.add("button-bg-spacing");
         element.after(box);
 
+        //Still to do check if it overlaps and tell which button it fails on
 
-        boxTop += element.offsetTop  || 0;
-        boxLeft += element.offsetLeft || 0;
-        boxOffsetParent = element.offsetParent;
-
-        console.log(boxTop,boxLeft,boxOffsetParent);
-
-        let cumulativeOffset = function(element) {
-            let top = 0, left = 0;
-            do {
-
-            } while(element);
-
-            return {
-                top: top,
-                left: left
-            };
-        };
-
-        console.log(cumulativeOffset[0]);
-
-
-        // console.log("cumulativeOffset left >>> " + cumulativeOffset.left );
     }
 }
 // function sendMessage(message) {

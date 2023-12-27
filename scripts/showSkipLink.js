@@ -18,11 +18,22 @@ function showSkipLink() {
         }
 
     });
+
 }
 
 function sendMessage(skipLinkMessage) {
+    let testResult;
+    if(skipLinkMessage === "Yes skip link is present"){
+        testResult = "Pass";
+    }else{
+        testResult = "Fail";
+    }
     (async () => {
-        await chrome.runtime.sendMessage({showSkipLinkMessage: skipLinkMessage})
+        await chrome.runtime.sendMessage({showSkipLinkMessage: skipLinkMessage, testName: "mc4", testResult: testResult})
     })();
+    // (async () => {
+    //
+    //     await chrome.runtime.sendMessage({mc4Test: mc4TestResult})
+    // })();
     console.log("Html page --- Is skip link present: ", skipLinkMessage);
 }

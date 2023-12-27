@@ -1,23 +1,327 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="../css/panel.css">
     <link rel="stylesheet" type="text/css" href="../css/style.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/panel.css">
 </head>
 <body>
 
 <div class="nhsbsa-browser-ext" role="region" aria-label="NHSBSA Browser extension">
-    <header role="banner">
-        <div id="nhsbsa">Test extension<br><a href="https://www.nhsbsa.nhs.uk/" target="_blank">NHS BSA</a></div>
-        <a href="https://www.nhsbsa.nhs.uk/" target="_blank" id="nhsbsaLogo">
-            <img src="../images/NHSBSA-logo.png" width="212" height="46px" alt="Return to NHS Business Services Authority logo" class="logo-image">
-        </a>
+    <header class="nhsuk-header" role="banner">
+
+        <div class="nhsuk-header__container">
+            <div class="nhsuk-header__logo max-width-full">
+                <a class="nhsuk-header__link nhsuk-header__link--service " href="/" aria-label="NHS digital service manual homepage">
+                <svg class="nhsuk-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 16" height="40" width="100">
+                    <path class="nhsuk-logo__background" fill="#005eb8" d="M0 0h40v16H0z"></path>
+                    <path class="nhsuk-logo__text" fill="#fff"
+                          d="M3.9 1.5h4.4l2.6 9h.1l1.8-9h3.3l-2.8 13H9l-2.7-9h-.1l-1.8 9H1.1M17.3 1.5h3.6l-1 4.9h4L25 1.5h3.5l-2.7 13h-3.5l1.1-5.6h-4.1l-1.2 5.6h-3.4M37.7 4.4c-.7-.3-1.6-.6-2.9-.6-1.4 0-2.5.2-2.5 1.3 0 1.8 5.1 1.2 5.1 5.1 0 3.6-3.3 4.5-6.4 4.5-1.3 0-2.9-.3-4-.7l.8-2.7c.7.4 2.1.7 3.2.7s2.8-.2 2.8-1.5c0-2.1-5.1-1.3-5.1-5 0-3.4 2.9-4.4 5.8-4.4 1.6 0 3.1.2 4 .6"></path>
+                </svg>
+                <span class="nhsuk-header__service-name rem0-9">
+           Business Services Authority
+        </span>
+            </a>
+            </div>
+            <div id="nhsbsa">Manual check list<br>1.0.1</div>
+        </div>
     </header>
+    <div class="nhsuk-width-container">
+        <ol class="nhsuk-u-margin-top-4 nhsuk-u-padding-0">
+            <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/">Manual tests</a></li>
+            <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/design-system">Front end tools</a></li>
+
+            <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/design-system/components">Extras</a></li>
+        </ol>
+    </div>
+    <hr aria-hidden="true" class="nhsuk-u-margin-top-0"/>
+
+<!--    <div class="nhsuk-inset-text">-->
+<!--        <span class="nhsuk-u-visually-hidden">Information: </span>-->
+<!--        <p>View development <a href="https://yellowcard.mhra.gov.uk/" title="External website"> front end tools</a>.</p>-->
+<!--    </div>-->
+
+    <div class="nhsuk-action-link">
+        <a class="nhsuk-action-link__link" href="#">
+            <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg"
+                 viewBox="0 0 24 24" aria-hidden="true" width="36" height="36">
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+            </svg>
+            <span class="nhsuk-action-link__text">Export test results (csv)</span>
+        </a>
+    </div>
+
+    <section>
+        <div class="nhsuk-do-dont-list">
+            <h3 class="nhsuk-do-dont-list__label">Manual checks results </h3>
+            <p><strong id="testsPassed">32 Passed</strong><br/>
+                <strong id="testsFailed">0 Failed</strong><br/>
+                <strong id="testsNa">0 Not applicable</strong><br/>
+                <strong id="testsUnTested">0 Untested</strong>
+            </p>
+            <ul class="nhsuk-list nhsuk-list--tick" role="list">
+                <li>
+                    <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         fill="none" aria-hidden="true" width="34" height="34">
+                        <path stroke-width="4" stroke-linecap="round" d="M18.4 7.8l-8.5 8.4L5.6 12"
+                              stroke="#007f3b"></path>
+                    </svg>
+                    <a href="#mc1" id="mc1Link">MC1 Screen orientation</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Pass)</span>
+                </li>
+                <li>
+                    <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg"
+                         viewBox="0 0 24 24" aria-hidden="true" height="34" width="34">
+                        <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"></path>
+                    </svg>
+                    <a href="#mc2" id="mc2Link">MC2 Navigation</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Check)</span>
+                </li>
+                <li id="mc3Li">
+                    <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         fill="none" aria-hidden="true" width="34" height="34">
+                        <path stroke="#dbe0e3" stroke-linecap="round" stroke-miterlimit="10"
+                              stroke-width="2" d="M8 12h8"></path>
+                    </svg>
+                    <a href="#mc3" id="mc3Link">MC3 Language</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(N/A)</span>
+                </li>
+                <li id="mc4Li">
+                    <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         aria-hidden="true" width="34" height="34">
+                        <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                        <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                    </svg>
+                    <a href="#mc4" id="mc4Link">MC4 Skip links</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Fail)</span>
+                </li>
+
+                <li id="mc5Li">
+                    <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         aria-hidden="true" width="34" height="34">
+                        <path stroke="#dbe0e3" stroke-linecap="round" stroke-miterlimit="10"
+                              stroke-width="2" d="M8 12h8"></path>
+                    </svg>
+                    <a href="#mc5" id="mc5Link">MC5 Headings</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Not tested)</span>
+                </li>
+                <li id="mc6Li">
+                    <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         aria-hidden="true" width="34" height="34">
+                        <path stroke="#dbe0e3" stroke-linecap="round" stroke-miterlimit="10"
+                              stroke-width="2" d="M8 12h8"></path>
+                    </svg>
+                    <a href="#mc6" id="mc6Link">MC6 Keyboard only</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Not tested)</span>
+                </li>
+                <li id="mc7Li">
+                    <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         aria-hidden="true" width="34" height="34">
+                        <path stroke="#dbe0e3" stroke-linecap="round" stroke-miterlimit="10"
+                              stroke-width="2" d="M8 12h8"></path>
+                    </svg>
+                    <a href="#mc7" id="mc7Link">MC7 Zoom and resizing</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Not tested)</span>
+                </li>
+
+                <li id="mc8Li">
+                    <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         aria-hidden="true" width="34" height="34">
+                        <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                        <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                    </svg>
+                    <a href="#mc8" id="mc8Link">MC8 Labels</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Fail)</span>
+                </li>
+
+            </ul>
+        </div>
+
+    </section>
+
+    <details class="nhsuk-details nhsuk-expander" id="mc1">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC1 Screen orientation
+    </span>
+            <strong class="nhsuk-tag nhsuk-tag--green nhsuk-u-float-right"> PASS </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">You can see your GP records by:</p>
+            <ul>
+                <li>asking for them at your GP surgery</li>
+                <li>going online to see them (if you have signed up for <a
+                        href="/using-the-nhs/nhs-services/gps/gp-online-services/">GP online services</a>)
+                </li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="nhsuk-details nhsuk-expander" id="mc2">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC2 Navigation
+    </span>
+            <strong class="nhsuk-tag nhsuk-tag--blue nhsuk-u-float-right"> CHECK </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">Make sure navigation is consistent</p>
+            <ul>
+                <li>Check skip links appear and work by opening your webpage then press the Tab button once.</li>
+                <li>Check all back links that are present and work as expected.</li>
+                <li>Check all search fields / boxes if present are focusable and work as expected.</li>
+                <li>Check all navigation links and buttons work as they appear and should do.</li>
+            </ul>
+        </div>
+    </details>
+
+
+    <details class="nhsuk-details nhsuk-expander" id="mc3">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC3 Language
+    </span>
+            <strong class="nhsuk-tag nhsuk-u-float-right" id="mc3Tag"> N/A </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">Check the language of the webpage is set correctly</p>
+            <ul>
+                <li>To check this, right click and view Page Source. At the top of the code there should be a piece of
+                    code set as the following: &lt;html lang="en-GB"&gt; or &lt;html lang="en"&gt; The entry
+                    specifies the natural language of the content on the webpage. This helps screen readers to know
+                    what language settings to use.
+                </li>
+            </ul>
+        </div>
+    </details>
+
+
+    <details class="nhsuk-details nhsuk-expander" id="mc4">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC4 Skip links
+    </span>
+            <strong class="nhsuk-tag nhsuk-u-float-right" id="mc4Tag"> N/A </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">Skip links are a means of bypassing blocks of content that are repeated on multiple
+                web pages</p>
+            <!-- Change this based on pass or fail -->
+            <ul>
+                <li>To check this open the webpage and click Tab once. An element called 'Skip to main Content' should
+                    appear in the top left corner and be highlighted with focus
+                </li>
+                <li>Check when clicking this link that the focus of the screen moves to the main content / area of the
+                    web page.
+                </li>
+            </ul>
+            <!--
+             Show skip link
+             Show tab index of skip link e.g. making sure it is first tab
+             Show content of skip link - focus where it links to?
+             -->
+            <div class="box">
+                <input type="checkbox" id="show_skip_link" name="show-skip-link" class="switch-input ext-hidden">
+                <label for="show_skip_link" class="switch-label">Show skip link:</label>
+                <div class="on-off-spans">
+                    <span class="toggle-off" aria-hidden="true">OFF</span>
+                    <span class="toggle-on" aria-hidden="true">ON</span>
+                </div>
+                <p><strong>Skip link present:</strong><span id="ext_skip_link"></span></p>
+                <p><strong>Skip link is first tab able item in the page:</strong><span id="ext_skip_link"></span></p>
+                <p><strong>Main content is:</strong><span id="ext_skip_link"></span></p>
+            </div>
+
+        </div>
+    </details>
+
+    <details class="nhsuk-details nhsuk-expander">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC5 Headings
+    </span>
+            <strong class="nhsuk-tag nhsuk-tag--white nhsuk-u-float-right"> UNCHECKED </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">Check all headings are styled correctly</p>
+            <ul>
+                <li>Check the page title has the tag &lt;h1&gt; in the page source. (On the title right click > View
+                    page source or Inspect) If this is a document title is it set to Heading 1.
+                </li>
+                <li>Check when clicking this link that the focus of the screen moves to the main content / area of the
+                    web page.
+                </li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="nhsuk-details nhsuk-expander">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC6 Headings
+    </span>
+            <strong class="nhsuk-tag nhsuk-tag--white nhsuk-u-float-right"> UNCHECKED </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">Check all headings are styled correctly</p>
+            <ul>
+                <li>Check the page title has the tag &lt;h1&gt; in the page source. (On the title right click > View
+                    page source or Inspect) If this is a document title is it set to Heading 1.
+                </li>
+                <li>Check when clicking this link that the focus of the screen moves to the main content / area of the
+                    web page.
+                </li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="nhsuk-details nhsuk-expander">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC7 Headings
+    </span>
+            <strong class="nhsuk-tag nhsuk-tag--white nhsuk-u-float-right"> UNCHECKED </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">Check all headings are styled correctly</p>
+            <ul>
+                <li>Check the page title has the tag &lt;h1&gt; in the page source. (On the title right click > View
+                    page source or Inspect) If this is a document title is it set to Heading 1.
+                </li>
+                <li>Check when clicking this link that the focus of the screen moves to the main content / area of the
+                    web page.
+                </li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="nhsuk-details nhsuk-expander">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC8 Labels
+    </span>
+            <strong class="nhsuk-tag nhsuk-tag--white nhsuk-u-float-right"> UNCHECKED </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">Label form fields clearly</p>
+            <ul>
+                <li>Check each form field has a corresponding label to describe it.
+                </li>
+                <li>No fields should have the name, instruction or pre-populated content in it.<br/>
+                    This information is then lost when an action or entry is made,
+                </li>
+            </ul>
+        </div>
+    </details>
 
     <div class="box">
-        <input type="checkbox" id="show_title" name="show-title" class="switch-input ext-hidden" >
+        <input type="checkbox" id="show_title" name="show-title" class="switch-input ext-hidden">
         <label for="show_title" class="switch-label">Show page title text:</label>
         <div class="on-off-spans">
             <span class="toggle-off" aria-hidden="true">OFF</span>
@@ -26,28 +330,18 @@
         <p><strong>Page title:</strong><span id="ext_page_title"></span></p>
     </div>
 
-<!--    <div class="box">-->
-<!--        <input type="checkbox" id="show_language" name="show-language" class="switch-input ext-hidden" >-->
-<!--        <label for="show_title" class="switch-label">Show language:</label>-->
-<!--        <div class="on-off-spans">-->
-<!--            <span class="toggle-off" aria-hidden="true">OFF</span>-->
-<!--            <span class="toggle-on" aria-hidden="true">ON</span>-->
-<!--        </div>-->
-<!--            <p><strong>Page language:</strong><span id="page_language"></span></p>-->
-<!--    </div>-->
+    <!--    <div class="box">-->
+    <!--        <input type="checkbox" id="show_language" name="show-language" class="switch-input ext-hidden" >-->
+    <!--        <label for="show_title" class="switch-label">Show language:</label>-->
+    <!--        <div class="on-off-spans">-->
+    <!--            <span class="toggle-off" aria-hidden="true">OFF</span>-->
+    <!--            <span class="toggle-on" aria-hidden="true">ON</span>-->
+    <!--        </div>-->
+    <!--            <p><strong>Page language:</strong><span id="page_language"></span></p>-->
+    <!--    </div>-->
 
     <div class="box">
-        <input type="checkbox" id="show_skip_link" name="show-skip-link" class="switch-input ext-hidden" >
-        <label for="show_skip_link" class="switch-label">Show skip link:</label>
-        <div class="on-off-spans">
-            <span class="toggle-off" aria-hidden="true">OFF</span>
-            <span class="toggle-on" aria-hidden="true">ON</span>
-        </div>
-        <p><strong>Skip link present:</strong><span id="ext_skip_link"></span></p>
-    </div>
-
-    <div class="box">
-        <input type="checkbox" id="styles_switch" name="set-hidden-text" class="switch-input ext-hidden" >
+        <input type="checkbox" id="styles_switch" name="set-hidden-text" class="switch-input ext-hidden">
         <label for="styles_switch" class="switch-label">Show hidden text:</label>
         <div class="on-off-spans">
             <span class="toggle-off" aria-hidden="true">OFF</span>
@@ -56,7 +350,7 @@
     </div>
 
     <div class="box">
-        <input type="checkbox" id="show_data_module" name="show-data-module" class="switch-input ext-hidden" >
+        <input type="checkbox" id="show_data_module" name="show-data-module" class="switch-input ext-hidden">
         <label for="show_data_module" class="switch-label">Show data-module:</label>
         <div class="on-off-spans">
             <span class="toggle-off" aria-hidden="true">OFF</span>
@@ -66,7 +360,7 @@
     </div>
 
     <div class="box">
-        <input type="checkbox" id="show_image_alt" name="show-image-alt" class="switch-input ext-hidden" >
+        <input type="checkbox" id="show_image_alt" name="show-image-alt" class="switch-input ext-hidden">
         <label for="show_image_alt" class="switch-label">Show image alt text:</label>
         <div class="on-off-spans">
             <span class="toggle-off" aria-hidden="true">OFF</span>
@@ -75,7 +369,7 @@
     </div>
 
     <div class="box">
-        <input type="checkbox" id="show_length_inputs" name="show-length-inputs" class="switch-input ext-hidden" >
+        <input type="checkbox" id="show_length_inputs" name="show-length-inputs" class="switch-input ext-hidden">
         <label for="show_length_inputs" class="switch-label">Show lengthen input fields:</label>
         <div class="on-off-spans">
             <span class="toggle-off" aria-hidden="true">OFF</span>
@@ -84,7 +378,7 @@
     </div>
 
     <div class="box">
-        <input type="checkbox" id="show_inline_Styles" name="show-inline-Styles" class="switch-input ext-hidden" >
+        <input type="checkbox" id="show_inline_Styles" name="show-inline-Styles" class="switch-input ext-hidden">
         <label for="show_inline_Styles" class="switch-label">Show inline styles:</label>
         <div class="on-off-spans">
             <span class="toggle-off" aria-hidden="true">OFF</span>
@@ -93,7 +387,7 @@
     </div>
 
     <div class="box">
-        <input type="checkbox" id="show_button_spacing" name="show-buttons-spacing" class="switch-input ext-hidden" >
+        <input type="checkbox" id="show_button_spacing" name="show-buttons-spacing" class="switch-input ext-hidden">
         <label for="show_button_spacing" class="switch-label">Show button spacing:</label>
         <div class="on-off-spans">
             <span class="toggle-off" aria-hidden="true">OFF</span>
@@ -101,264 +395,274 @@
         </div>
     </div>
 
-<!--    <div class="nhsuk-tabs" data-module="nhsuk-tabs">-->
-<!--        <h2 class="nhsuk-tabs__title">-->
-<!--            Tabs content-->
-<!--        </h2>-->
-
-<!--        <ul class="nhsuk-tabs__list">-->
-
-<!--            <li class="nhsuk-tabs__list-item nhsuk-tabs__list-item&#45;&#45;selected">-->
-<!--                <a class="nhsuk-tabs__tab" href="#past-day">-->
-<!--                    Past day-->
-<!--                </a>-->
-<!--            </li>-->
-
-<!--            <li class="nhsuk-tabs__list-item">-->
-<!--                <a class="nhsuk-tabs__tab" href="#past-week">-->
-<!--                    Past week-->
-<!--                </a>-->
-<!--            </li>-->
-
-<!--            <li class="nhsuk-tabs__list-item">-->
-<!--                <a class="nhsuk-tabs__tab" href="#past-month">-->
-<!--                    Past month-->
-<!--                </a>-->
-<!--            </li>-->
-
-<!--            <li class="nhsuk-tabs__list-item">-->
-<!--                <a class="nhsuk-tabs__tab" href="#past-year">-->
-<!--                    Past year-->
-<!--                </a>-->
-<!--            </li>-->
-
-<!--        </ul>-->
-
-<!--        <div class="nhsuk-tabs__panel" id="past-day">-->
-
-<!--            <table role="table" class="nhsuk-table-responsive">-->
-<!--                <caption class="nhsuk-table__caption">Past day</caption>-->
-<!--                <thead role="rowgroup" class="nhsuk-table__head">-->
-<!--                <tr role="row">-->
-<!--                    <th role="columnheader" class="" scope="col">-->
-<!--                        Case manager-->
-<!--                    </th>-->
-<!--                    <th role="columnheader" class="" scope="col">-->
-<!--                        Cases opened-->
-<!--                    </th>-->
-<!--                    <th role="columnheader" class="" scope="col">-->
-<!--                        Cases closed-->
-<!--                    </th>-->
-<!--                </tr>-->
-<!--                </thead>-->
-<!--                <tbody class="nhsuk-table__body">-->
-<!--                <tr role="row" class="nhsuk-table__row">-->
-<!--                    <td role="cell" class="nhsuk-table__cell">-->
-<!--                        <span class="nhsuk-table-responsive__heading">Case manager </span>David Francis-->
-<!--                    </td>-->
-<!--                    <td role="cell" class="nhsuk-table__cell">-->
-<!--                        <span class="nhsuk-table-responsive__heading">Cases opened </span>3-->
-<!--                    </td>-->
-<!--                    <td role="cell" class="nhsuk-table__cell">-->
-<!--                        <span class="nhsuk-table-responsive__heading">Cases closed </span>0-->
-<!--                    </td>-->
-<!--                </tr>-->
-<!--                <tr role="row" class="nhsuk-table__row">-->
-<!--                    <td role="cell" class="nhsuk-table__cell">-->
-<!--                        <span class="nhsuk-table-responsive__heading">Case manager </span>Paul Farmer-->
-<!--                    </td>-->
-<!--                    <td role="cell" class="nhsuk-table__cell">-->
-<!--                        <span class="nhsuk-table-responsive__heading">Cases opened </span>1-->
-<!--                    </td>-->
-<!--                    <td role="cell" class="nhsuk-table__cell">-->
-<!--                        <span class="nhsuk-table-responsive__heading">Cases closed </span>0-->
-<!--                    </td>-->
-<!--                </tr>-->
-<!--                <tr role="row" class="nhsuk-table__row">-->
-<!--                    <td role="cell" class="nhsuk-table__cell">-->
-<!--                        <span class="nhsuk-table-responsive__heading">Case manager </span>Rita Patel-->
-<!--                    </td>-->
-<!--                    <td role="cell" class="nhsuk-table__cell">-->
-<!--                        <span class="nhsuk-table-responsive__heading">Cases opened </span>2-->
-<!--                    </td>-->
-<!--                    <td role="cell" class="nhsuk-table__cell">-->
-<!--                        <span class="nhsuk-table-responsive__heading">Cases closed </span>0-->
-<!--                    </td>-->
-<!--                </tr>-->
-<!--                </tbody>-->
-<!--            </table>-->
-
-<!--        </div>-->
-
-<!--        <div class="nhsuk-tabs__panel nhsuk-tabs__panel&#45;&#45;hidden" id="past-week">-->
-
-<!--            <table role="table" class="nhsuk-table-responsive">-->
-<!--                <caption class="nhsuk-table__caption">Past week</caption>-->
-<!--                <thead role="rowgroup" class="nhsuk-table__head">-->
-<!--                <tr role="row">-->
-<!--                    <th role="columnheader" class="" scope="col">-->
-<!--                        Case manager-->
-<!--                    </th>-->
-<!--                    <th role="columnheader" class="" scope="col">-->
-<!--                        Cases opened-->
-<!--                    </th>-->
-<!--                    <th role="columnheader" class="" scope="col">-->
-<!--                        Cases closed-->
-<!--                    </th>-->
-<!--                </tr>-->
-<!--                </thead>-->
-<!--                <tbody class="nhsuk-table__body">-->
-<!--                <tr role="row" class="nhsuk-table__row">-->
-<!--                    <td role="cell" class="nhsuk-table__cell">-->
-<!--                        <span class="nhsuk-table-responsive__heading">Case manager </span>David Francis-->
-<!--                    </td>-->
-<!--                    <td role="cell" class="nhsuk-table__cell">-->
-<!--                        <span class="nhsuk-table-responsive__heading">Cases opened </span>24-->
-<!--                    </td>-->
-<!--                    <td role="cell" class="nhsuk-table__cell">-->
-<!--                        <span class="nhsuk-table-responsive__heading">Cases closed </span>18-->
-<!--                    </td>-->
-<!--                </tr>-->
-<!--                <tr role="row" class="nhsuk-table__row">-->
-<!--                    <td role="cell" class="nhsuk-table__cell">-->
-<!--                        <span class="nhsuk-table-responsive__heading">Case manager </span>Paul Farmer-->
-<!--                    </td>-->
-<!--                    <td role="cell" class="nhsuk-table__cell">-->
-<!--                        <span class="nhsuk-table-responsive__heading">Cases opened </span>16-->
-<!--                    </td>-->
-<!--                    <td role="cell" class="nhsuk-table__cell">-->
-<!--                        <span class="nhsuk-table-responsive__heading">Cases closed </span>20-->
-<!--                    </td>-->
-<!--                </tr>-->
-<!--                <tr role="row" class="nhsuk-table__row">-->
-<!--                    <td role="cell" class="nhsuk-table__cell">-->
-<!--                        <span class="nhsuk-table-responsive__heading">Case manager </span>Rita Patel-->
-<!--                    </td>-->
-<!--                    <td role="cell" class="nhsuk-table__cell">-->
-<!--                        <span class="nhsuk-table-responsive__heading">Cases opened </span>24-->
-<!--                    </td>-->
-<!--                    <td role="cell" class="nhsuk-table__cell">-->
-<!--                        <span class="nhsuk-table-responsive__heading">Cases closed </span>27-->
-<!--                    </td>-->
-<!--                </tr>-->
-<!--                </tbody>-->
-<!--            </table>-->
-
-<!--        </div>-->
-
-<!--        <div class="nhsuk-tabs__panel nhsuk-tabs__panel&#45;&#45;hidden" id="past-month">-->
-
-<!--            <table role="table" class="nhsuk-table-responsive">-->
-<!--                <caption class="nhsuk-table__caption">Past month</caption>-->
-<!--                <thead role="rowgroup" class="nhsuk-table__head">-->
-<!--                <tr role="row">-->
-<!--                    <th role="columnheader" class="" scope="col">-->
-<!--                        Case manager-->
-<!--                    </th>-->
-<!--                    <th role="columnheader" class="" scope="col">-->
-<!--                        Cases opened-->
-<!--                    </th>-->
-<!--                    <th role="columnheader" class="" scope="col">-->
-<!--                        Cases closed-->
-<!--                    </th>-->
-<!--                </tr>-->
-<!--                </thead>-->
-<!--                <tbody class="nhsuk-table__body">-->
-<!--                <tr role="row" class="nhsuk-table__row">-->
-<!--                    <td role="cell" class="nhsuk-table__cell">-->
-<!--                        <span class="nhsuk-table-responsive__heading">Case manager </span>David Francis-->
-<!--                    </td>-->
-<!--                    <td role="cell" class="nhsuk-table__cell">-->
-<!--                        <span class="nhsuk-table-responsive__heading">Cases opened </span>98-->
-<!--                    </td>-->
-<!--                    <td role="cell" class="nhsuk-table__cell">-->
-<!--                        <span class="nhsuk-table-responsive__heading">Cases closed </span>95-->
-<!--                    </td>-->
-<!--                </tr>-->
-<!--                <tr role="row" class="nhsuk-table__row">-->
-<!--                    <td role="cell" class="nhsuk-table__cell">-->
-<!--                        <span class="nhsuk-table-responsive__heading">Case manager </span>Paul Farmer-->
-<!--                    </td>-->
-<!--                    <td role="cell" class="nhsuk-table__cell">-->
-<!--                        <span class="nhsuk-table-responsive__heading">Cases opened </span>122-->
-<!--                    </td>-->
-<!--                    <td role="cell" class="nhsuk-table__cell">-->
-<!--                        <span class="nhsuk-table-responsive__heading">Cases closed </span>131-->
-<!--                    </td>-->
-<!--                </tr>-->
-<!--                <tr role="row" class="nhsuk-table__row">-->
-<!--                    <td role="cell" class="nhsuk-table__cell">-->
-<!--                        <span class="nhsuk-table-responsive__heading">Case manager </span>Rita Patel-->
-<!--                    </td>-->
-<!--                    <td role="cell" class="nhsuk-table__cell">-->
-<!--                        <span class="nhsuk-table-responsive__heading">Cases opened </span>126-->
-<!--                    </td>-->
-<!--                    <td role="cell" class="nhsuk-table__cell">-->
-<!--                        <span class="nhsuk-table-responsive__heading">Cases closed </span>142-->
-<!--                    </td>-->
-<!--                </tr>-->
-<!--                </tbody>-->
-<!--            </table>-->
-
-<!--        </div>-->
-
-<!--        <div class="nhsuk-tabs__panel nhsuk-tabs__panel&#45;&#45;hidden" id="past-year">-->
-
-<!--            <table role="table" class="nhsuk-table-responsive">-->
-<!--                <caption class="nhsuk-table__caption">Past year</caption>-->
-<!--                <thead role="rowgroup" class="nhsuk-table__head">-->
-<!--                <tr role="row">-->
-<!--                    <th role="columnheader" class="" scope="col">-->
-<!--                        Case manager-->
-<!--                    </th>-->
-<!--                    <th role="columnheader" class="" scope="col">-->
-<!--                        Cases opened-->
-<!--                    </th>-->
-<!--                    <th role="columnheader" class="" scope="col">-->
-<!--                        Cases closed-->
-<!--                    </th>-->
-<!--                </tr>-->
-<!--                </thead>-->
-<!--                <tbody class="nhsuk-table__body">-->
-<!--                <tr role="row" class="nhsuk-table__row">-->
-<!--                    <td role="cell" class="nhsuk-table__cell">-->
-<!--                        <span class="nhsuk-table-responsive__heading">Case manager </span>David Francis-->
-<!--                    </td>-->
-<!--                    <td role="cell" class="nhsuk-table__cell">-->
-<!--                        <span class="nhsuk-table-responsive__heading">Cases opened </span>1380-->
-<!--                    </td>-->
-<!--                    <td role="cell" class="nhsuk-table__cell">-->
-<!--                        <span class="nhsuk-table-responsive__heading">Cases closed </span>1472-->
-<!--                    </td>-->
-<!--                </tr>-->
-<!--                <tr role="row" class="nhsuk-table__row">-->
-<!--                    <td role="cell" class="nhsuk-table__cell">-->
-<!--                        <span class="nhsuk-table-responsive__heading">Case manager </span>Paul Farmer-->
-<!--                    </td>-->
-<!--                    <td role="cell" class="nhsuk-table__cell">-->
-<!--                        <span class="nhsuk-table-responsive__heading">Cases opened </span>1129-->
-<!--                    </td>-->
-<!--                    <td role="cell" class="nhsuk-table__cell">-->
-<!--                        <span class="nhsuk-table-responsive__heading">Cases closed </span>1083-->
-<!--                    </td>-->
-<!--                </tr>-->
-<!--                <tr role="row" class="nhsuk-table__row">-->
-<!--                    <td role="cell" class="nhsuk-table__cell">-->
-<!--                        <span class="nhsuk-table-responsive__heading">Case manager </span>Rita Patel-->
-<!--                    </td>-->
-<!--                    <td role="cell" class="nhsuk-table__cell">-->
-<!--                        <span class="nhsuk-table-responsive__heading">Cases opened </span>1539-->
-<!--                    </td>-->
-<!--                    <td role="cell" class="nhsuk-table__cell">-->
-<!--                        <span class="nhsuk-table-responsive__heading">Cases closed </span>1265-->
-<!--                    </td>-->
-<!--                </tr>-->
-<!--                </tbody>-->
-<!--            </table>-->
-
-<!--        </div>-->
-
+    <div class="box">
+        <input type="checkbox" id="show_tab_index" name="show-tab-index" class="switch-input ext-hidden">
+        <label for="show_tab_index" class="switch-label">Show tab index:</label>
+        <div class="on-off-spans">
+            <span class="toggle-off" aria-hidden="true">OFF</span>
+            <span class="toggle-on" aria-hidden="true">ON</span>
+        </div>
+        <p><strong>Tab index attribute: </strong><span id="ext_tab_index"></span></p>
     </div>
+
+    <!--    <div class="nhsuk-tabs" data-module="nhsuk-tabs">-->
+    <!--        <h2 class="nhsuk-tabs__title">-->
+    <!--            Tabs content-->
+    <!--        </h2>-->
+
+    <!--        <ul class="nhsuk-tabs__list">-->
+
+    <!--            <li class="nhsuk-tabs__list-item nhsuk-tabs__list-item&#45;&#45;selected">-->
+    <!--                <a class="nhsuk-tabs__tab" href="#past-day">-->
+    <!--                    Past day-->
+    <!--                </a>-->
+    <!--            </li>-->
+
+    <!--            <li class="nhsuk-tabs__list-item">-->
+    <!--                <a class="nhsuk-tabs__tab" href="#past-week">-->
+    <!--                    Past week-->
+    <!--                </a>-->
+    <!--            </li>-->
+
+    <!--            <li class="nhsuk-tabs__list-item">-->
+    <!--                <a class="nhsuk-tabs__tab" href="#past-month">-->
+    <!--                    Past month-->
+    <!--                </a>-->
+    <!--            </li>-->
+
+    <!--            <li class="nhsuk-tabs__list-item">-->
+    <!--                <a class="nhsuk-tabs__tab" href="#past-year">-->
+    <!--                    Past year-->
+    <!--                </a>-->
+    <!--            </li>-->
+
+    <!--        </ul>-->
+
+    <!--        <div class="nhsuk-tabs__panel" id="past-day">-->
+
+    <!--            <table role="table" class="nhsuk-table-responsive">-->
+    <!--                <caption class="nhsuk-table__caption">Past day</caption>-->
+    <!--                <thead role="rowgroup" class="nhsuk-table__head">-->
+    <!--                <tr role="row">-->
+    <!--                    <th role="columnheader" class="" scope="col">-->
+    <!--                        Case manager-->
+    <!--                    </th>-->
+    <!--                    <th role="columnheader" class="" scope="col">-->
+    <!--                        Cases opened-->
+    <!--                    </th>-->
+    <!--                    <th role="columnheader" class="" scope="col">-->
+    <!--                        Cases closed-->
+    <!--                    </th>-->
+    <!--                </tr>-->
+    <!--                </thead>-->
+    <!--                <tbody class="nhsuk-table__body">-->
+    <!--                <tr role="row" class="nhsuk-table__row">-->
+    <!--                    <td role="cell" class="nhsuk-table__cell">-->
+    <!--                        <span class="nhsuk-table-responsive__heading">Case manager </span>David Francis-->
+    <!--                    </td>-->
+    <!--                    <td role="cell" class="nhsuk-table__cell">-->
+    <!--                        <span class="nhsuk-table-responsive__heading">Cases opened </span>3-->
+    <!--                    </td>-->
+    <!--                    <td role="cell" class="nhsuk-table__cell">-->
+    <!--                        <span class="nhsuk-table-responsive__heading">Cases closed </span>0-->
+    <!--                    </td>-->
+    <!--                </tr>-->
+    <!--                <tr role="row" class="nhsuk-table__row">-->
+    <!--                    <td role="cell" class="nhsuk-table__cell">-->
+    <!--                        <span class="nhsuk-table-responsive__heading">Case manager </span>Paul Farmer-->
+    <!--                    </td>-->
+    <!--                    <td role="cell" class="nhsuk-table__cell">-->
+    <!--                        <span class="nhsuk-table-responsive__heading">Cases opened </span>1-->
+    <!--                    </td>-->
+    <!--                    <td role="cell" class="nhsuk-table__cell">-->
+    <!--                        <span class="nhsuk-table-responsive__heading">Cases closed </span>0-->
+    <!--                    </td>-->
+    <!--                </tr>-->
+    <!--                <tr role="row" class="nhsuk-table__row">-->
+    <!--                    <td role="cell" class="nhsuk-table__cell">-->
+    <!--                        <span class="nhsuk-table-responsive__heading">Case manager </span>Rita Patel-->
+    <!--                    </td>-->
+    <!--                    <td role="cell" class="nhsuk-table__cell">-->
+    <!--                        <span class="nhsuk-table-responsive__heading">Cases opened </span>2-->
+    <!--                    </td>-->
+    <!--                    <td role="cell" class="nhsuk-table__cell">-->
+    <!--                        <span class="nhsuk-table-responsive__heading">Cases closed </span>0-->
+    <!--                    </td>-->
+    <!--                </tr>-->
+    <!--                </tbody>-->
+    <!--            </table>-->
+
+    <!--        </div>-->
+
+    <!--        <div class="nhsuk-tabs__panel nhsuk-tabs__panel&#45;&#45;hidden" id="past-week">-->
+
+    <!--            <table role="table" class="nhsuk-table-responsive">-->
+    <!--                <caption class="nhsuk-table__caption">Past week</caption>-->
+    <!--                <thead role="rowgroup" class="nhsuk-table__head">-->
+    <!--                <tr role="row">-->
+    <!--                    <th role="columnheader" class="" scope="col">-->
+    <!--                        Case manager-->
+    <!--                    </th>-->
+    <!--                    <th role="columnheader" class="" scope="col">-->
+    <!--                        Cases opened-->
+    <!--                    </th>-->
+    <!--                    <th role="columnheader" class="" scope="col">-->
+    <!--                        Cases closed-->
+    <!--                    </th>-->
+    <!--                </tr>-->
+    <!--                </thead>-->
+    <!--                <tbody class="nhsuk-table__body">-->
+    <!--                <tr role="row" class="nhsuk-table__row">-->
+    <!--                    <td role="cell" class="nhsuk-table__cell">-->
+    <!--                        <span class="nhsuk-table-responsive__heading">Case manager </span>David Francis-->
+    <!--                    </td>-->
+    <!--                    <td role="cell" class="nhsuk-table__cell">-->
+    <!--                        <span class="nhsuk-table-responsive__heading">Cases opened </span>24-->
+    <!--                    </td>-->
+    <!--                    <td role="cell" class="nhsuk-table__cell">-->
+    <!--                        <span class="nhsuk-table-responsive__heading">Cases closed </span>18-->
+    <!--                    </td>-->
+    <!--                </tr>-->
+    <!--                <tr role="row" class="nhsuk-table__row">-->
+    <!--                    <td role="cell" class="nhsuk-table__cell">-->
+    <!--                        <span class="nhsuk-table-responsive__heading">Case manager </span>Paul Farmer-->
+    <!--                    </td>-->
+    <!--                    <td role="cell" class="nhsuk-table__cell">-->
+    <!--                        <span class="nhsuk-table-responsive__heading">Cases opened </span>16-->
+    <!--                    </td>-->
+    <!--                    <td role="cell" class="nhsuk-table__cell">-->
+    <!--                        <span class="nhsuk-table-responsive__heading">Cases closed </span>20-->
+    <!--                    </td>-->
+    <!--                </tr>-->
+    <!--                <tr role="row" class="nhsuk-table__row">-->
+    <!--                    <td role="cell" class="nhsuk-table__cell">-->
+    <!--                        <span class="nhsuk-table-responsive__heading">Case manager </span>Rita Patel-->
+    <!--                    </td>-->
+    <!--                    <td role="cell" class="nhsuk-table__cell">-->
+    <!--                        <span class="nhsuk-table-responsive__heading">Cases opened </span>24-->
+    <!--                    </td>-->
+    <!--                    <td role="cell" class="nhsuk-table__cell">-->
+    <!--                        <span class="nhsuk-table-responsive__heading">Cases closed </span>27-->
+    <!--                    </td>-->
+    <!--                </tr>-->
+    <!--                </tbody>-->
+    <!--            </table>-->
+
+    <!--        </div>-->
+
+    <!--        <div class="nhsuk-tabs__panel nhsuk-tabs__panel&#45;&#45;hidden" id="past-month">-->
+
+    <!--            <table role="table" class="nhsuk-table-responsive">-->
+    <!--                <caption class="nhsuk-table__caption">Past month</caption>-->
+    <!--                <thead role="rowgroup" class="nhsuk-table__head">-->
+    <!--                <tr role="row">-->
+    <!--                    <th role="columnheader" class="" scope="col">-->
+    <!--                        Case manager-->
+    <!--                    </th>-->
+    <!--                    <th role="columnheader" class="" scope="col">-->
+    <!--                        Cases opened-->
+    <!--                    </th>-->
+    <!--                    <th role="columnheader" class="" scope="col">-->
+    <!--                        Cases closed-->
+    <!--                    </th>-->
+    <!--                </tr>-->
+    <!--                </thead>-->
+    <!--                <tbody class="nhsuk-table__body">-->
+    <!--                <tr role="row" class="nhsuk-table__row">-->
+    <!--                    <td role="cell" class="nhsuk-table__cell">-->
+    <!--                        <span class="nhsuk-table-responsive__heading">Case manager </span>David Francis-->
+    <!--                    </td>-->
+    <!--                    <td role="cell" class="nhsuk-table__cell">-->
+    <!--                        <span class="nhsuk-table-responsive__heading">Cases opened </span>98-->
+    <!--                    </td>-->
+    <!--                    <td role="cell" class="nhsuk-table__cell">-->
+    <!--                        <span class="nhsuk-table-responsive__heading">Cases closed </span>95-->
+    <!--                    </td>-->
+    <!--                </tr>-->
+    <!--                <tr role="row" class="nhsuk-table__row">-->
+    <!--                    <td role="cell" class="nhsuk-table__cell">-->
+    <!--                        <span class="nhsuk-table-responsive__heading">Case manager </span>Paul Farmer-->
+    <!--                    </td>-->
+    <!--                    <td role="cell" class="nhsuk-table__cell">-->
+    <!--                        <span class="nhsuk-table-responsive__heading">Cases opened </span>122-->
+    <!--                    </td>-->
+    <!--                    <td role="cell" class="nhsuk-table__cell">-->
+    <!--                        <span class="nhsuk-table-responsive__heading">Cases closed </span>131-->
+    <!--                    </td>-->
+    <!--                </tr>-->
+    <!--                <tr role="row" class="nhsuk-table__row">-->
+    <!--                    <td role="cell" class="nhsuk-table__cell">-->
+    <!--                        <span class="nhsuk-table-responsive__heading">Case manager </span>Rita Patel-->
+    <!--                    </td>-->
+    <!--                    <td role="cell" class="nhsuk-table__cell">-->
+    <!--                        <span class="nhsuk-table-responsive__heading">Cases opened </span>126-->
+    <!--                    </td>-->
+    <!--                    <td role="cell" class="nhsuk-table__cell">-->
+    <!--                        <span class="nhsuk-table-responsive__heading">Cases closed </span>142-->
+    <!--                    </td>-->
+    <!--                </tr>-->
+    <!--                </tbody>-->
+    <!--            </table>-->
+
+    <!--        </div>-->
+
+    <!--        <div class="nhsuk-tabs__panel nhsuk-tabs__panel&#45;&#45;hidden" id="past-year">-->
+
+    <!--            <table role="table" class="nhsuk-table-responsive">-->
+    <!--                <caption class="nhsuk-table__caption">Past year</caption>-->
+    <!--                <thead role="rowgroup" class="nhsuk-table__head">-->
+    <!--                <tr role="row">-->
+    <!--                    <th role="columnheader" class="" scope="col">-->
+    <!--                        Case manager-->
+    <!--                    </th>-->
+    <!--                    <th role="columnheader" class="" scope="col">-->
+    <!--                        Cases opened-->
+    <!--                    </th>-->
+    <!--                    <th role="columnheader" class="" scope="col">-->
+    <!--                        Cases closed-->
+    <!--                    </th>-->
+    <!--                </tr>-->
+    <!--                </thead>-->
+    <!--                <tbody class="nhsuk-table__body">-->
+    <!--                <tr role="row" class="nhsuk-table__row">-->
+    <!--                    <td role="cell" class="nhsuk-table__cell">-->
+    <!--                        <span class="nhsuk-table-responsive__heading">Case manager </span>David Francis-->
+    <!--                    </td>-->
+    <!--                    <td role="cell" class="nhsuk-table__cell">-->
+    <!--                        <span class="nhsuk-table-responsive__heading">Cases opened </span>1380-->
+    <!--                    </td>-->
+    <!--                    <td role="cell" class="nhsuk-table__cell">-->
+    <!--                        <span class="nhsuk-table-responsive__heading">Cases closed </span>1472-->
+    <!--                    </td>-->
+    <!--                </tr>-->
+    <!--                <tr role="row" class="nhsuk-table__row">-->
+    <!--                    <td role="cell" class="nhsuk-table__cell">-->
+    <!--                        <span class="nhsuk-table-responsive__heading">Case manager </span>Paul Farmer-->
+    <!--                    </td>-->
+    <!--                    <td role="cell" class="nhsuk-table__cell">-->
+    <!--                        <span class="nhsuk-table-responsive__heading">Cases opened </span>1129-->
+    <!--                    </td>-->
+    <!--                    <td role="cell" class="nhsuk-table__cell">-->
+    <!--                        <span class="nhsuk-table-responsive__heading">Cases closed </span>1083-->
+    <!--                    </td>-->
+    <!--                </tr>-->
+    <!--                <tr role="row" class="nhsuk-table__row">-->
+    <!--                    <td role="cell" class="nhsuk-table__cell">-->
+    <!--                        <span class="nhsuk-table-responsive__heading">Case manager </span>Rita Patel-->
+    <!--                    </td>-->
+    <!--                    <td role="cell" class="nhsuk-table__cell">-->
+    <!--                        <span class="nhsuk-table-responsive__heading">Cases opened </span>1539-->
+    <!--                    </td>-->
+    <!--                    <td role="cell" class="nhsuk-table__cell">-->
+    <!--                        <span class="nhsuk-table-responsive__heading">Cases closed </span>1265-->
+    <!--                    </td>-->
+    <!--                </tr>-->
+    <!--                </tbody>-->
+    <!--            </table>-->
+
+    <!--        </div>-->
+
+</div>
 </div>
 <script src="./js/sidebar.js"></script>
 </body>

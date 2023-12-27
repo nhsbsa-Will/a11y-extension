@@ -28,11 +28,14 @@
         "html/panel.html",
         "scripts/showHiddenText.js" ,
         "scripts/showTitle.js" ,
+        "scripts/showLang.js" ,
         "scripts/showSkipLink.js",
         "scripts/checkButtons.js",
         "scripts/showImageAltText.js",
         "scripts/removeImageAltText.js",
-        "scripts/buttonSpacing.js"
+        "scripts/buttonSpacing.js",
+        "scripts/showLabel.js",
+        "scripts/checkTabIndex.js"
       ],
       "matches": ["<all_urls>"]
     }
