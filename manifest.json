@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "A11y checker",
   "version": "1.0",
-  "description": "Makes visually hidden text visible",
+  "description": "Manual testing and front end browser tools",
   "icons": {
     "16": "images/eye-16.png",
     "32": "images/eye-32.png",
@@ -22,20 +22,9 @@
   },
   "web_accessible_resources": [
     {
-      "resources": ["css/panel.css",
-        "css/style.min.css",
-        "images/NHSBSA-logo.png",
-        "html/panel.html",
-        "scripts/showHiddenText.js" ,
-        "scripts/showTitle.js" ,
-        "scripts/showLang.js" ,
-        "scripts/showSkipLink.js",
-        "scripts/checkButtons.js",
-        "scripts/showImageAltText.js",
-        "scripts/removeImageAltText.js",
-        "scripts/buttonSpacing.js",
-        "scripts/showLabel.js",
-        "scripts/checkTabIndex.js"
+      "resources": ["css/*",
+        "html/*",
+        "scripts/*"
       ],
       "matches": ["<all_urls>"]
     }

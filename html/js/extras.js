@@ -18,6 +18,8 @@ let showButtonSpacing = document.getElementById('show_button_spacing');
 let showTabIndex = document.getElementById('show_tab_index');
 let tabIndex = document.getElementById('ext_tab_index');
 
+const exportToExcel = document.getElementById('export_to_excel');
+
 
 //To show expanded details
 let mc1Link = document.getElementById('mc1Link');
@@ -289,6 +291,12 @@ showTabIndex.addEventListener('click', () => {
             })
     }
 });
+
+//Export to excel or csv ?? (Later project)
+exportToExcel.addEventListener('click',()=>{
+    console.log("Export to excel please!!!")
+    fnExcelReport();
+})
 
 function failedTest(href, id, linkText) {
     return "<svg className='nhsuk-icon nhsuk-icon__cross' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden='true' width='34' height='34'>" +

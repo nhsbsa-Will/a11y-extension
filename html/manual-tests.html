@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/panel.css">
+</head>
+<body>
+
+<div class="nhsbsa-browser-ext" role="region" aria-label="NHSBSA Browser extension">
+    <header class="nhsuk-header" role="banner">
+
+        <div class="nhsuk-header__container">
+            <div class="nhsuk-header__logo max-width-full">
+                <a class="nhsuk-header__link nhsuk-header__link--service " href="/"
+                   aria-label="NHS digital service manual homepage">
+                    <svg class="nhsuk-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 16" height="40"
+                         width="100">
+                        <path class="nhsuk-logo__background" fill="#005eb8" d="M0 0h40v16H0z"></path>
+                        <path class="nhsuk-logo__text" fill="#fff"
+                              d="M3.9 1.5h4.4l2.6 9h.1l1.8-9h3.3l-2.8 13H9l-2.7-9h-.1l-1.8 9H1.1M17.3 1.5h3.6l-1 4.9h4L25 1.5h3.5l-2.7 13h-3.5l1.1-5.6h-4.1l-1.2 5.6h-3.4M37.7 4.4c-.7-.3-1.6-.6-2.9-.6-1.4 0-2.5.2-2.5 1.3 0 1.8 5.1 1.2 5.1 5.1 0 3.6-3.3 4.5-6.4 4.5-1.3 0-2.9-.3-4-.7l.8-2.7c.7.4 2.1.7 3.2.7s2.8-.2 2.8-1.5c0-2.1-5.1-1.3-5.1-5 0-3.4 2.9-4.4 5.8-4.4 1.6 0 3.1.2 4 .6"></path>
+                    </svg>
+                    <span class="nhsuk-header__service-name rem0-9">
+           Business Services Authority
+        </span>
+                </a>
+            </div>
+            <div id="nhsbsa">Manual check list<br>1.0.1</div>
+        </div>
+    </header>
+    <div class="nhsuk-width-container">
+        <ol class="nhsuk-u-margin-top-4 nhsuk-u-padding-0">
+            <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="manual-tests.html">Manual
+                tests</a></li>
+            <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="front-end-tools.html">Front end
+                tools</a></li>
+
+            <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="extras.html">Extras</a></li>
+        </ol>
+    </div>
+    <hr aria-hidden="true" class="nhsuk-u-margin-top-0"/>
+
+    <!--    <div class="nhsuk-inset-text">-->
+    <!--        <span class="nhsuk-u-visually-hidden">Information: </span>-->
+    <!--        <p>View development <a href="https://yellowcard.mhra.gov.uk/" title="External website"> front end tools</a>.</p>-->
+    <!--    </div>-->
+
+    <div class="nhsuk-action-link">
+        <a class="nhsuk-action-link__link" id="export_to_excel" href="#">
+            <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg"
+                 viewBox="0 0 24 24" aria-hidden="true" width="36" height="36">
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+            </svg>
+            <span class="nhsuk-action-link__text">Export test results (excel/csv)</span>
+        </a>
+    </div>
+
+    <section>
+        <div class="nhsuk-do-dont-list">
+            <h3 class="nhsuk-do-dont-list__label">Manual checks results </h3>
+            <p><strong id="testsPassed">32 Passed</strong><br/>
+                <strong id="testsFailed">0 Failed</strong><br/>
+                <strong id="testsNa">0 Not applicable</strong><br/>
+                <strong id="testsCheck">0 Checks required</strong>
+            </p>
+            <hr aria-hidden="true" class="nhsuk-u-margin-top-0"/>
+
+            <p><strong>Results</strong></p>
+            <ul class="nhsuk-list nhsuk-list--tick" role="list">
+                <li>
+                    <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         aria-hidden="true" width="34" height="34">
+                        <path stroke="#dbe0e3" stroke-linecap="round" stroke-miterlimit="10"
+                              stroke-width="2" d="M8 12h8"></path>
+                    </svg>
+                    <a href="#mc1" id="mc1Link">MC1 Screen orientation</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Not tested)</span>
+                </li>
+                <li>
+                    <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg"
+                         viewBox="0 0 24 24" aria-hidden="true" height="34" width="34">
+                        <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"></path>
+                    </svg>
+                    <a href="#mc2" id="mc2Link">MC2 Navigation</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Check)</span>
+                </li>
+                <li id="mc3Li">
+                    <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         fill="none" aria-hidden="true" width="34" height="34">
+                        <path stroke="#dbe0e3" stroke-linecap="round" stroke-miterlimit="10"
+                              stroke-width="2" d="M8 12h8"></path>
+                    </svg>
+                    <a href="#mc3" id="mc3Link">MC3 Language</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(N/A)</span>
+                </li>
+                <li id="mc4Li">
+                    <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         aria-hidden="true" width="34" height="34">
+                        <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                        <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                    </svg>
+                    <a href="#mc4" id="mc4Link">MC4 Skip links</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Fail)</span>
+                </li>
+
+                <li id="mc5Li">
+                    <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         aria-hidden="true" width="34" height="34">
+                        <path stroke="#dbe0e3" stroke-linecap="round" stroke-miterlimit="10"
+                              stroke-width="2" d="M8 12h8"></path>
+                    </svg>
+                    <a href="#mc5" id="mc5Link">MC5 Headings</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Not tested)</span>
+                </li>
+                <li id="mc6Li">
+                    <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         aria-hidden="true" width="34" height="34">
+                        <path stroke="#dbe0e3" stroke-linecap="round" stroke-miterlimit="10"
+                              stroke-width="2" d="M8 12h8"></path>
+                    </svg>
+                    <a href="#mc6" id="mc6Link">MC6 Keyboard only</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Not tested)</span>
+                </li>
+                <li id="mc7Li">
+                    <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         aria-hidden="true" width="34" height="34">
+                        <path stroke="#dbe0e3" stroke-linecap="round" stroke-miterlimit="10"
+                              stroke-width="2" d="M8 12h8"></path>
+                    </svg>
+                    <a href="#mc7" id="mc7Link">MC7 Zoom and resizing</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Not tested)</span>
+                </li>
+
+                <li id="mc8Li">
+                    <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         aria-hidden="true" width="34" height="34">
+                        <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                        <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                    </svg>
+                    <a href="#mc8" id="mc8Link">MC8 Labels</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Fail)</span>
+                </li>
+
+                <li id="mc9Li">
+                    <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         aria-hidden="true" width="34" height="34">
+                        <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                        <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                    </svg>
+                    <a href="#mc9" id="mc9Link">MC9 Links</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Fail)</span>
+                </li>
+                <li id="mc10Li">
+                    <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         aria-hidden="true" width="34" height="34">
+                        <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                        <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                    </svg>
+                    <a href="#mc10" id="mc10Link">MC10 Errors</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Fail)</span>
+                </li>
+                <li id="mc11Li">
+                    <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         aria-hidden="true" width="34" height="34">
+                        <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                        <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                    </svg>
+                    <a href="#mc11" id="mc11Link">MC11 Use of colour</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Fail)</span>
+                </li>
+                <li id="mc12Li">
+                    <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         aria-hidden="true" width="34" height="34">
+                        <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                        <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                    </svg>
+                    <a href="#mc12" id="mc12Link">MC12 Urls</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Fail)</span>
+                </li>
+                <li id="mc13Li">
+                    <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         aria-hidden="true" width="34" height="34">
+                        <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                        <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                    </svg>
+                    <a href="#mc13" id="mc13Link">MC13 Tab indexes</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Fail)</span>
+                </li>
+                <li id="mc14Li">
+                    <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         aria-hidden="true" width="34" height="34">
+                        <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                        <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                    </svg>
+                    <a href="#mc14" id="mc14Link">MC14 Video / audio content</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Fail)</span>
+                </li>
+                <li id="mc15Li">
+                    <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         aria-hidden="true" width="34" height="34">
+                        <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                        <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                    </svg>
+                    <a href="#mc15" id="mc15Link">MC15 Times outs</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Fail)</span>
+                </li>
+                <li id="mc16Li">
+                    <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         aria-hidden="true" width="34" height="34">
+                        <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                        <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                    </svg>
+                    <a href="#mc16" id="mc16Link">MC16 Auto complete & redundant entry</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Fail)</span>
+                </li>
+                <li id="mc17Li">
+                    <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         aria-hidden="true" width="34" height="34">
+                        <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                        <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                    </svg>
+                    <a href="#mc17" id="mc17Link">MC17 Flash & animations</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Fail)</span>
+                </li>
+                <li id="mc18Li">
+                    <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         aria-hidden="true" width="34" height="34">
+                        <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                        <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                    </svg>
+                    <a href="#mc18" id="mc18Link">MC18 Keyboard shortcuts</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Fail)</span>
+                </li>
+                <li id="mc19Li">
+                    <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         aria-hidden="true" width="34" height="34">
+                        <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                        <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                    </svg>
+                    <a href="#mc19" id="mc19Link">MC19 Mouse operations</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Fail)</span>
+                </li>
+                <li id="mc20Li">
+                    <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         aria-hidden="true" width="34" height="34">
+                        <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                        <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                    </svg>
+                    <a href="#mc20" id="mc20Link">MC20 Text in images</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Fail)</span>
+                </li>
+                <li id="mc21Li">
+                    <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         aria-hidden="true" width="34" height="34">
+                        <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                        <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                    </svg>
+                    <a href="#mc21" id="mc21Link">MC21 Hover over / pop ups</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Fail)</span>
+                </li>
+                <li id="mc22Li">
+                    <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         aria-hidden="true" width="34" height="34">
+                        <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                        <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                    </svg>
+                    <a href="#mc22" id="mc22Link">MC22 Automatic audio</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Fail)</span>
+                </li>
+                <li id="mc23Li">
+                    <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         aria-hidden="true" width="34" height="34">
+                        <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                        <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                    </svg>
+                    <a href="#mc23" id="mc23Link">MC23 Touch / pointer gestures</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Fail)</span>
+                </li>
+                <li id="mc24Li">
+                    <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         aria-hidden="true" width="34" height="34">
+                        <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                        <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                    </svg>
+                    <a href="#mc24" id="mc24Link">MC24 Motion gestures</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Fail)</span>
+                </li>
+                <li id="mc25Li">
+                    <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         aria-hidden="true" width="34" height="34">
+                        <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                        <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                    </svg>
+                    <a href="#mc25" id="mc25Link">MC25 Disabling Css styling</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Fail)</span>
+                </li>
+                <li id="mc26Li">
+                    <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         aria-hidden="true" width="34" height="34">
+                        <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                        <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                    </svg>
+                    <a href="#mc26" id="mc26Link">MC26 Instruction styling</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Fail)</span>
+                </li>
+                <li id="mc27Li">
+                    <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         aria-hidden="true" width="34" height="34">
+                        <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                        <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                    </svg>
+                    <a href="#mc27" id="mc27Link">MC27 Page titles</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Fail)</span>
+                </li>
+                <li id="mc28Li">
+                    <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         aria-hidden="true" width="34" height="34">
+                        <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                        <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                    </svg>
+                    <a href="#mc28" id="mc28Link">MC28 Non java script</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Fail)</span>
+                </li>
+                <li id="mc29Li">
+                    <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         aria-hidden="true" width="34" height="34">
+                        <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                        <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                    </svg>
+                    <a href="#mc29" id="mc29Link">MC29 Website help features</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Fail)</span>
+                </li>
+                <li id="mc30Li">
+                    <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         aria-hidden="true" width="34" height="34">
+                        <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                        <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                    </svg>
+                    <a href="#mc30" id="mc30Link">MC30 Authentication</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Fail)</span>
+                </li>
+                <li id="mc31Li">
+                    <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         aria-hidden="true" width="34" height="34">
+                        <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                        <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                    </svg>
+                    <a href="#mc31" id="mc31Link">MC31 Dragging movements</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Fail)</span>
+                </li>
+                <li id="mc32Li">
+                    <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         aria-hidden="true" width="34" height="34">
+                        <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                        <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                    </svg>
+                    <a href="#mc32" id="mc32Link">MC32 Target size</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Fail)</span>
+                </li>
+                <li id="mc33Li">
+                    <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         aria-hidden="true" width="34" height="34">
+                        <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                        <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"
+                              fill="#d5281b"></path>
+                    </svg>
+                    <a href="#mc33" id="mc33Link">MC33 Focus not obscured</a>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Fail)</span>
+                </li>
+
+            </ul>
+        </div>
+
+    </section>
+
+    <details class="nhsuk-details nhsuk-expander" id="mc1">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC1 Screen orientation
+    </span>
+            <strong class="nhsuk-tag nhsuk-tag--green nhsuk-u-float-right" id="mc1Tag"> PASS </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">You can see your GP records by:</p>
+            <ul>
+                <li>asking for them at your GP surgery</li>
+                <li>going online to see them (if you have signed up for <a
+                        href="/using-the-nhs/nhs-services/gps/gp-online-services/">GP online services</a>)
+                </li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="nhsuk-details nhsuk-expander" id="mc2">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC2 Navigation
+    </span>
+            <strong class="nhsuk-tag nhsuk-tag--blue nhsuk-u-float-right" id="mc2Tag"> CHECK </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">Make sure navigation is consistent</p>
+            <ul>
+                <li>Check skip links appear and work by opening your webpage then press the Tab button once.</li>
+                <li>Check all back links that are present and work as expected.</li>
+                <li>Check all search fields / boxes if present are focusable and work as expected.</li>
+                <li>Check all navigation links and buttons work as they appear and should do.</li>
+            </ul>
+        </div>
+    </details>
+
+
+    <details class="nhsuk-details nhsuk-expander" id="mc3">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC3 Language
+    </span>
+            <strong class="nhsuk-tag nhsuk-u-float-right" id="mc3Tag"> N/A </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">Check the language of the webpage is set correctly</p>
+            <ul>
+                <li>To check this, right click and view Page Source. At the top of the code there should be a piece of
+                    code set as the following: &lt;html lang="en-GB"&gt; or &lt;html lang="en"&gt; The entry
+                    specifies the natural language of the content on the webpage. This helps screen readers to know
+                    what language settings to use.
+                </li>
+            </ul>
+        </div>
+    </details>
+
+
+    <details class="nhsuk-details nhsuk-expander" id="mc4">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC4 Skip links
+    </span>
+            <strong class="nhsuk-tag nhsuk-u-float-right" id="mc4Tag"> N/A </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">Skip links are a means of bypassing blocks of content that are repeated on multiple
+                web pages</p>
+            <!-- Change this based on pass or fail -->
+            <ul>
+                <li>To check this open the webpage and click Tab once. An element called 'Skip to main Content' should
+                    appear in the top left corner and be highlighted with focus
+                </li>
+                <li>Check when clicking this link that the focus of the screen moves to the main content / area of the
+                    web page.
+                </li>
+            </ul>
+            <!--
+             Show skip link
+             Show tab index of skip link e.g. making sure it is first tab
+             Show content of skip link - focus where it links to?
+             -->
+            <div class="box">
+                <input type="checkbox" id="show_skip_link" name="show-skip-link" class="switch-input ext-hidden">
+                <label for="show_skip_link" class="switch-label">Show skip link:</label>
+                <div class="on-off-spans">
+                    <span class="toggle-off" aria-hidden="true">OFF</span>
+                    <span class="toggle-on" aria-hidden="true">ON</span>
+                </div>
+                <p><strong>Skip link present:</strong><span id="ext_skip_link"></span></p>
+                <p><strong>Skip link is first tab able item in the page:</strong><span id="ext_skip_link"></span></p>
+                <p><strong>Main content is:</strong><span id="ext_skip_link"></span></p>
+            </div>
+
+        </div>
+    </details>
+
+    <details class="nhsuk-details nhsuk-expander" id="mc5">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC5 Headings
+    </span>
+            <strong class="nhsuk-tag nhsuk-tag--white nhsuk-u-float-right" id="mc5Tag"> UNCHECKED </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">Check all headings are styled correctly</p>
+            <ul>
+                <li>Check the page title has the tag &lt;h1&gt; in the page source. (On the title right click > View
+                    page source or Inspect) If this is a document title is it set to Heading 1.
+                </li>
+                <li>Check when clicking this link that the focus of the screen moves to the main content / area of the
+                    web page.
+                </li>
+            </ul>
+            <div class="box">
+                <input type="checkbox" id="show_title" name="show-title" class="switch-input ext-hidden">
+                <label for="show_title" class="switch-label">Show page title text:</label>
+                <div class="on-off-spans">
+                    <span class="toggle-off" aria-hidden="true">OFF</span>
+                    <span class="toggle-on" aria-hidden="true">ON</span>
+                </div>
+                <p><strong>Page title:</strong><span id="ext_page_title"></span></p>
+            </div>
+        </div>
+    </details>
+
+    <details class="nhsuk-details nhsuk-expander" id="mc6">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC6 Keyboard only
+    </span>
+            <strong class="nhsuk-tag nhsuk-tag--white nhsuk-u-float-right" id="mc6Tag"> UNCHECKED </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">Check keyboard accessibility</p>
+            <ul>
+                <li>Tab to all links, buttons and form controls. If you can’t tab to these controls then the Tab Indexes
+                    may be incorrect or missing.
+                <li>You can not tab to non-functional elements (such as headings, paragraphs or labels). Labels that are
+                    focusable elements themselves are misleading and don’t serve the purpose they were designed for. Any
+                    labels that can be focused upon please raise as a defect.
+                </li>
+                <li>The focus of the fields are clear. This will either be with a red or yellow outline if using the nhs
+                    toolkit. Other focus colours will have to match WCAG colour contrast requirements.
+                </li>
+                <li>The focus does not move or select hidden elements. An instance of this would be where the focus
+                    seems to disappear then reappear when tabbing or moving on. This would indicate that hidden fields
+                    gained the focus attention.
+                </li>
+                <li>The focus does not get trapped in any element and does not move.</li>
+                <li>Scripted events (for keyboard, mouse and touch) only occur when expected, for example events that
+                    would happen when a button is clicked must also be available if keyboard navigation is used (focus
+                    is on the element then space or return key is pressed).
+                </li>
+                <li>The visual order for tabbing progress is left-to-right and top-to-bottom and forms a logical
+                    pattern. If the tab order is down lists or in a random sequence then these are failures.
+                </li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="nhsuk-details nhsuk-expander" id="mc7">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC7 Zoom & Resizing
+    </span>
+            <strong class="nhsuk-tag nhsuk-tag--white nhsuk-u-float-right" id="mc7Tag">Unchecked</strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">Test that text sizes and zooms correctly </p>
+            <ul>
+                <li>Size your browser window to 1280px wide. (You can use the web developer toolbar in Firefox or
+                    Chrome.)
+                </li>
+                <li>Zoom into 400%. All content including tables should be focusable and no scroll bars should appear.
+                </li>
+                <li>Whilst zoomed in at 400%: If scroll bars are applied then this can affect keyboard only users from
+                    accessing content.
+                </li>
+                <li>Whilst zoomed in at 400%: Try navigating with keyboard only, if this causes issues then these need
+                    to be raised as defects.
+                </li>
+                <li>Check that you can still see all the content and functionality, even if it involves opening
+                    show/hide elements or clicking through to another page.
+                </li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="nhsuk-details nhsuk-expander" id="mc8">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC8 Labels
+    </span>
+            <strong class="nhsuk-tag nhsuk-tag--white nhsuk-u-float-right" id="mc8Tag"> UNCHECKED </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">Label form fields clearly</p>
+            <ul>
+                <li>Check each form field has a corresponding label to describe it.</li>
+                <li>No fields should have the name, instruction or pre-populated content in it.<br/>
+                    This information is then lost when an action or entry is made,
+                </li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="nhsuk-details nhsuk-expander" id="mc9">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC9 Links
+    </span>
+            <strong class="nhsuk-tag nhsuk-tag--white nhsuk-u-float-right" id="mc9Tag"> UNCHECKED </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">Meaningful links</p>
+            <ul>
+                <li>Check all links and link text are clear and accurate to their purpose and role.</li>
+                <li>Check all links for source / destination duplication. If the same link appears ensure it directs to
+                    the same source. For example, 2 Contact us links on the same page should go to same source.
+                    Different link names are required if they are to be different link destinations.
+                </li>
+                <li>If multiple links exist please question why links have been duplicated. Duplication can cause
+                    confusion to users.
+                </li>
+                <li>Check for duplication of links like ‘Change’ on Check Your Answers pages. All these links should be
+                    unique and describe what each change link is for. For example, Change forename, change surname.
+                </li>
+                <li>Check for links that download files. Any link that will open, download or view a file must have the
+                    file type specified in the link. We don’t have to include the size of the file but this may be
+                    useful as well.
+                </li>
+                <li>Check any links that open content in a new tab or window clearly states this next to the link. Check
+                    in assistive technologies that this also works correctly.
+                </li>
+            </ul>
+        </div>
+    </details>
+    <details class="nhsuk-details nhsuk-expander" id="mc10">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC10 Errors
+    </span>
+            <strong class="nhsuk-tag nhsuk-tag--white nhsuk-u-float-right" id="mc10Tag"> UNCHECKED </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">Highlight errors</p>
+            <ul>
+                <li>
+                </li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="nhsuk-details nhsuk-expander" id="mc11">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC11 Use of colour
+    </span>
+            <strong class="nhsuk-tag nhsuk-tag--white nhsuk-u-float-right" id="mc11Tag"> UNCHECKED </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">Do not rely on colour or position alone</p>
+            <ul>
+                <li>
+                </li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="nhsuk-details nhsuk-expander" id="mc12">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC12 Urls
+    </span>
+            <strong class="nhsuk-tag nhsuk-tag--white nhsuk-u-float-right" id="mc12Tag"> UNCHECKED </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">Check that URL’s are clear, understandable and not lengthy</p>
+            <ul>
+                <li>
+                </li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="nhsuk-details nhsuk-expander" id="mc13">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC13 Tab indexes
+    </span>
+            <strong class="nhsuk-tag nhsuk-tag--white nhsuk-u-float-right" id="mc13Tag"> UNCHECKED </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">Check that focus is handled in sequential order by keyboard navigation</p>
+            <ul>
+                <li>Check tabindex code is not included on fields or elements.<br/>
+                    This way the elements on the screen will gain focus based on the logical structure of keyboard navigation on the screen. (left to right then top to bottom).</li>
+                <li>Check tab indexes do not have negative values (usually tabindex="-1") unless there is a valid reason for doing so.<br/>
+                    By using negative tab indexes this This means that the element is not reachable via sequential keyboard navigation.<br/>
+                    The only exemption to this case is for error summaries or links. These are set specifically with -1 to gain immediate focus when an error occurs.</li>
+            </ul>
+        </div>
+    </details>
+    <details class="nhsuk-details nhsuk-expander" id="mc14">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC14 Video / audio
+    </span>
+            <strong class="nhsuk-tag nhsuk-tag--white nhsuk-u-float-right" id="mc14Tag"> UNCHECKED </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">Make video and multimedia accessible</p>
+            <ul>
+                <li>Check that videos have captions explaining any sound effects and dialogue.</li>
+                <li>Check the quality of these captions is sufficient to portray the same information and message that audio does.</li>
+                <li>Check that transcripts are provided for any audio content used.</li>
+            </ul>
+        </div>
+    </details>
+    <details class="nhsuk-details nhsuk-expander" id="mc15">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC15 Time outs
+    </span>
+            <strong class="nhsuk-tag nhsuk-tag--white nhsuk-u-float-right" id="mc15Tag"> UNCHECKED </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">Give users time to read and act</p>
+            <ul>
+                <li>If you have a time out setting applied then ensure both visual and non visual users need to be made aware of the timeout period coming to an end.</li>
+                <li>This is in the form of a prompt that will include a timer which will count down the remainder of the timeout session. This is, for example five mins before the end of a 20 minute timeout.</li>
+                <li>You also need to give the user the chance to interact with the webpage to prevent the timeout from happening or be able to extend their session.</li>
+                <li>If the user selects to extend the session or makes an action to stop the time out then the original webpage they were on should appear. The webpage should not be refreshed or changed in any way from what it showed before the timeout.</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="nhsuk-details nhsuk-expander" id="mc16">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC16 Auto complete
+    </span>
+            <strong class="nhsuk-tag nhsuk-tag--white nhsuk-u-float-right" id="mc16Tag"> UNCHECKED </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">Check autocomplete is applied where possible.<br/> Information previously entered by a user is not needing entry again.</p>
+            <ul>
+                <li></li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="nhsuk-details nhsuk-expander" id="mc17">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC17 Animations
+    </span>
+            <strong class="nhsuk-tag nhsuk-tag--white nhsuk-u-float-right" id="mc17Tag"> UNCHECKED </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">Check autocomplete is applied where possible.<br/> Information previously entered by a user is not needing entry again.</p>
+            <ul>
+                <li>Make sure that users can pause, hide or stop anything that moves, blinks or scrolls automatically and lasts more than 5 seconds.</li>
+                <li>Pages should not contain anything that flashes more than 3 times in any 1 second.<br/>
+                    Or the flash should be below the general flash and red flash thresholds.</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="nhsuk-details nhsuk-expander" id="mc18">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC18 Keyboard shortcuts
+    </span>
+            <strong class="nhsuk-tag nhsuk-tag--white nhsuk-u-float-right" id="mc18Tag"> UNCHECKED </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">Do not add keyboard shortcuts</p>
+            <ul>
+                <li>Check your service does not use single character keyboard shortcuts.</li>
+                <li>The user has the ability to turn off the keyboard shortcuts.</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="nhsuk-details nhsuk-expander" id="mc19">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC19 Mouse operations
+    </span>
+            <strong class="nhsuk-tag nhsuk-tag--white nhsuk-u-float-right" id="mc19Tag"> UNCHECKED </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">Do not use "onkeydown" or "onmousedown" for links and buttons</p>
+            <ul>
+                <li>Otherwise right mouse click > View Page Source > do a search for mouseup and mousedown. If any are found then these need to analysed for scope of use.</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="nhsuk-details nhsuk-expander" id="mc20">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC20 Text in images
+    </span>
+            <strong class="nhsuk-tag nhsuk-tag--white nhsuk-u-float-right" id="mc20Tag"> UNCHECKED </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">Do not include text in images</p>
+            <ul>
+                <li>Check that all your service's images don’t contain text in images.</li>
+                <li>Logo's are exempt but it is good practice to use well defined alt text for logos. For example, the NHSBSA logo used on a lot of services should have alt text “NHS Business Services Authority”.</li>
+            </ul>
+
+            <div class="box">
+                <input type="checkbox" id="show_image_alt" name="show-image-alt" class="switch-input ext-hidden">
+                <label for="show_image_alt" class="switch-label">Show image alt text:</label>
+                <div class="on-off-spans">
+                    <span class="toggle-off" aria-hidden="true">OFF</span>
+                    <span class="toggle-on" aria-hidden="true">ON</span>
+                </div>
+            </div>
+        </div>
+    </details>
+
+    <details class="nhsuk-details nhsuk-expander" id="mc21">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC21 Hover over / pop ups
+    </span>
+            <strong class="nhsuk-tag nhsuk-tag--white nhsuk-u-float-right" id="mc21Tag"> UNCHECKED </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">Do not trigger pop-ups by hover or focus</p>
+            <ul>
+                <li>Check that all your product/service's images do not produce pop-ups by field focusing or hovering over fields.</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="nhsuk-details nhsuk-expander" id="mc22">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC22 Automatic audio
+    </span>
+            <strong class="nhsuk-tag nhsuk-tag--white nhsuk-u-float-right" id="mc22Tag"> UNCHECKED </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">Do not play audio automatically</p>
+            <ul>
+                <li>Check your service does not play sound or audio automatically by turning on the speakers and navigating through the system both by mouse and keyboard.</li>
+                <li>If the service does have audio then means to control the audio is available.</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="nhsuk-details nhsuk-expander" id="mc23">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC23 Touch / pointer gestures
+    </span>
+            <strong class="nhsuk-tag nhsuk-tag--white nhsuk-u-float-right" id="mc23Tag"> UNCHECKED </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">Do not rely on touch gestures</p>
+            <ul>
+                <li>Check your service does not rely on touch inputs or screens. If they do or any part of the system does then an alternative should be available for use.</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="nhsuk-details nhsuk-expander" id="mc24">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC24 Motion gestures
+    </span>
+            <strong class="nhsuk-tag nhsuk-tag--white nhsuk-u-float-right" id="mc24Tag"> UNCHECKED </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">Do not rely on motion sensors</p>
+            <ul>
+                <li>Check your service does not rely on motion sensors. If they do then there should be a way to disable and alternatives to using this method.</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="nhsuk-details nhsuk-expander" id="mc25">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC25 Disabling css styling
+    </span>
+            <strong class="nhsuk-tag nhsuk-tag--blue nhsuk-u-float-right" id="mc25Tag"> CHECK </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">Check functionality with CSS Styles turned off</p>
+            <ul>
+                <li></li>
+            </ul>
+
+            <div class="box">
+                <input type="checkbox" id="disable_css" name="disable-css" class="switch-input ext-hidden">
+                <label for="disable_css" class="switch-label">Disable css styles:</label>
+                <div class="on-off-spans">
+                    <span class="toggle-off" aria-hidden="true">OFF</span>
+                    <span class="toggle-on" aria-hidden="true">ON</span>
+                </div>
+            </div>
+        </div>
+    </details>
+
+    <details class="nhsuk-details nhsuk-expander" id="mc26">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC26 Instruction styling
+    </span>
+            <strong class="nhsuk-tag nhsuk-tag--white nhsuk-u-float-right" id="mc26Tag"> UNCHECKED </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">Check that instructions are styled properly.</p>
+            <ul>
+                <li>Check for any of these instances in the website especially with links. Click here is a particularly bad example.</li>
+            </ul>
+        </div>
+    </details>
+    <details class="nhsuk-details nhsuk-expander" id="mc27">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC27 Page titles
+    </span>
+            <strong class="nhsuk-tag nhsuk-tag--white nhsuk-u-float-right" id="mc27Tag"> UNCHECKED </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">Check that pages have good titles.</p>
+            <ul>
+                <li></li>
+            </ul>
+        </div>
+    </details>
+    <details class="nhsuk-details nhsuk-expander" id="mc28">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC28 Non JavaScript
+    </span>
+            <strong class="nhsuk-tag nhsuk-tag--blue nhsuk-u-float-right" id="mc28Tag"> CHECK </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">Check functionality with Java script turned off</p>
+            <ul>
+                <li></li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="nhsuk-details nhsuk-expander" id="mc29">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC29 Website help features
+    </span>
+            <strong class="nhsuk-tag nhsuk-tag--white nhsuk-u-float-right" id="mc29Tag"> UNCHECKED </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">Check all help features appear in the same style and appearance on multiple pages</p>
+            <ul>
+                <li></li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="nhsuk-details nhsuk-expander" id="mc30">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC30 Authentication
+    </span>
+            <strong class="nhsuk-tag nhsuk-tag--white nhsuk-u-float-right" id="mc30Tag"> UNCHECKED </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">Check a cognitive function test is not required in authenticating users or access</p>
+            <ul>
+                <li></li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="nhsuk-details nhsuk-expander" id="mc31">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC31 Dragging movements
+    </span>
+            <strong class="nhsuk-tag nhsuk-tag--white nhsuk-u-float-right" id="mc31Tag"> UNCHECKED </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">Check all dragging operations can be completed by a single pointer</p>
+            <ul>
+                <li>Check if any of the above apply in your website and that alternatives are provided.</li>
+            </ul>
+        </div>
+    </details>
+    <details class="nhsuk-details nhsuk-expander" id="mc32">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC32 Target size
+    </span>
+            <strong class="nhsuk-tag nhsuk-tag--white nhsuk-u-float-right" id="mc32Tag"> UNCHECKED </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">Check the size of pointer input target areas</p>
+            <ul>
+                <li>Check the target does not overlap any other target and has a target offset of at least 24 CSS pixels to every adjacent target.</li>
+            </ul>
+        </div>
+    </details>
+
+    <details class="nhsuk-details nhsuk-expander" id="mc33">
+        <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      MC33 Focus not obscured
+    </span>
+            <strong class="nhsuk-tag nhsuk-tag--white nhsuk-u-float-right" id="mc33Tag"> UNCHECKED </strong>
+        </summary>
+        <div class="nhsuk-details__text">
+            <p class="nhsuk-hint">In focus content is not obscured</p>
+            <ul>
+                <li>Completely hidden, masked or obscured then this is a total failure (High Severity Defect).</li>
+                <li>Not entirely hidden, masked or obscured then this is ‘AA’ compliant (Low Severity Defect – low as elements should not have any disruptions at all to be fully accessible.</li>
+                <li>No part is hidden, masked or obscured then this is ‘AAA’ compliant. This is perfect and full accessible to users.</li>
+            </ul>
+        </div>
+    </details>
+</div>
+</div>
+<script src="js/manual-tests.js"></script>
+</body>
+</html>

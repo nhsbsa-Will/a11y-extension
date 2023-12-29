@@ -158,7 +158,7 @@ header {
 .switch-label:before, .switch-label:after {
     content: "";
     position: absolute;
-    margin-left: 250px;
+    margin-left: 210px;
     outline: 0;
     top: 50%;
     -ms-transform: translate(0, -50%);

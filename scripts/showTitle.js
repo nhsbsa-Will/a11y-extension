@@ -1,9 +1,6 @@
 showHtmlPageTitle()
 function showHtmlPageTitle() {
 
-    //mc8 - labels - show for links to help developers ***
-    const pageLabels = document.getElementsByTagName("label");
-
     //mc9 - links
     const pageHrefs = document.getElementsByTagName("a");
     for (const element of pageHrefs) {
@@ -59,7 +56,7 @@ function showHtmlPageTitle() {
     let message;
     (htmlTitle) ? message = htmlTitle : message = "No title could be found"
     console.log("Html page title:", message);
-    //Send message to sidebar.js filer where it's listening to it
+    //Send message to manual-tests.js filer where it's listening to it
     (async () => {
         await chrome.runtime.sendMessage({showTitleMessage: message})
     })();

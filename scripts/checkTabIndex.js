@@ -1,27 +1,60 @@
+/***** NEEDS BATTLE TESTING && NEEDS FUNCTIONALITY TO SHOW WHERE THE TABINDEX IS ****/
+
 checkTabIndex()
 function checkTabIndex() {
+    console.log("checkTabIndex!!!!")
     //Check DOM for attribute tabIndex
-    // const areButtonPresent = document.querySelectorAll("input[type=button]");
     const areTabIndexPresent = document.querySelectorAll(" [tabindex] ");
-    let tabIndexMessage;
-    for (const tabIndex of areTabIndexPresent) {
-        let tabIndexDataModule = tabIndex.getAttribute("data-module");
-        if(tabIndexDataModule){
-            console.log("Html does have tab index :" + tabIndexDataModule);
-            tabIndexMessage = "Html does have tab index :" + tabIndexDataModule;
-            sendMessage(tabIndexMessage);
-        }else{
-            console.log("Html does not have tab index :" + tabIndex.outerHTML);
-            // needs a link to the code not generate the html button
-            tabIndexMessage = "Html does not have tab index :" + tabIndex.outerHTML;
-            sendMessage(tabIndexMessage);
-            //create something to highlight the button as there could be more than 1 and to replace focus
-            // tabIndex.focus();
+    if(areTabIndexPresent.length>0){
+        for (const tabIndexEl of areTabIndexPresent) {
+            console.log(tabIndexEl.tabIndex);
+            console.log(Math.sign(tabIndexEl.tabIndex));
+            let isNegativeNumber = Math.sign(tabIndexEl.tabIndex)
+            if(isNegativeNumber == -1){
+                /**FUNCTIONALITY REQUIRED HERE**/
+                console.log("Html does have tab index with a - :" + tabIndexEl);
+                //check the tabindex element role = alert
+                let curElRole = tabIndexEl.getAttribute('role');
+                if(curElRole == "alert" && tabIndexEl.tabIndex == -1){
+                    console.log("Html does have tab index with a - but its an role='alert' :)");
+                    sendMessage("true");
+                }else{
+                    sendMessage("Fail");
+                    //Does it need a check here??
+                    //sendMessage("check");
+                }
+            }else{
+                console.log("Html does not have a - tab index :)");
+                sendMessage("true");
+            }
         }
+    }else{
+        console.log("Html does not have tab index :)");
+        sendMessage("true");
     }
+
 }
 function sendMessage(message) {
+    let testResult;
+    console.log(message);
+
+    switch (message) {
+        case "true":
+            testResult = "Pass";
+            break;
+        case  "check":
+            testResult = "Check";
+            break;
+        case  "na":
+            testResult = "N/A";
+            break;
+        default :
+            testResult = "Fail";
+    }
+
     (async () => {
-        await chrome.runtime.sendMessage({showMessage: message})
+        await chrome.runtime.sendMessage({showTabIndexesMessage: message, testName: "mc13", testResult: testResult})
     })();
+    console.log("Show tab index message: ", message);
+    console.log("Show tab index testResult: ", testResult);
 }
