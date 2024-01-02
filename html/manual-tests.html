@@ -535,20 +535,27 @@
             <p class="nhsuk-hint">Check all headings are styled correctly</p>
             <ul>
                 <li>Check the page title has the tag &lt;h1&gt; in the page source. (On the title right click > View
-                    page source or Inspect) If this is a document title is it set to Heading 1.
+                    page
+                    source or Inspect) If this is a document title is it set to Heading 1.
                 </li>
-                <li>Check when clicking this link that the focus of the screen moves to the main content / area of the
-                    web page.
+                <li>Every other sub section of your page should start with an H2 and each sub-section of an H2 with an
+                    H3. It is possible to have sub-sub-sections which start with an H4.
+                </li>
+                <li>With each heading, ask yourself if it's a sub-section of the previous heading. If not, it should be
+                    at the same level as (or higher than) the previous section.
+                </li>
+                <li>Make sure that headings follow the correct "nesting" order and don't skip levels. The structure of
+                    the page is the key thing, not the size and style of the text.
                 </li>
             </ul>
             <div class="box">
-                <input type="checkbox" id="show_title" name="show-title" class="switch-input ext-hidden">
-                <label for="show_title" class="switch-label">Show page title text:</label>
+                <input type="checkbox" id="show_headings" name="show-headings" class="switch-input ext-hidden">
+                <label for="show_headings" class="switch-label">Highlight headings:</label>
                 <div class="on-off-spans">
                     <span class="toggle-off" aria-hidden="true">OFF</span>
                     <span class="toggle-on" aria-hidden="true">ON</span>
                 </div>
-                <p><strong>Page title:</strong><span id="ext_page_title"></span></p>
+
             </div>
         </div>
     </details>
@@ -724,11 +731,26 @@
             <p class="nhsuk-hint">Check that focus is handled in sequential order by keyboard navigation</p>
             <ul>
                 <li>Check tabindex code is not included on fields or elements.<br/>
-                    This way the elements on the screen will gain focus based on the logical structure of keyboard navigation on the screen. (left to right then top to bottom).</li>
-                <li>Check tab indexes do not have negative values (usually tabindex="-1") unless there is a valid reason for doing so.<br/>
-                    By using negative tab indexes this This means that the element is not reachable via sequential keyboard navigation.<br/>
-                    The only exemption to this case is for error summaries or links. These are set specifically with -1 to gain immediate focus when an error occurs.</li>
+                    This way the elements on the screen will gain focus based on the logical structure of keyboard
+                    navigation on the screen. (left to right then top to bottom).
+                </li>
+                <li>Check tab indexes do not have negative values (usually tabindex="-1") unless there is a valid reason
+                    for doing so.<br/>
+                    By using negative tab indexes this This means that the element is not reachable via sequential
+                    keyboard navigation.<br/>
+                    The only exemption to this case is for error summaries or links. These are set specifically with -1
+                    to gain immediate focus when an error occurs.
+                </li>
             </ul>
+
+            <div class="box">
+                <input type="checkbox" id="show_tab_indexes" name="show-tab-indexes" class="switch-input ext-hidden">
+                <label for="disable_css" class="switch-label">Show tab indexes:</label>
+                <div class="on-off-spans">
+                    <span class="toggle-off" aria-hidden="true">OFF</span>
+                    <span class="toggle-on" aria-hidden="true">ON</span>
+                </div>
+            </div>
         </div>
     </details>
     <details class="nhsuk-details nhsuk-expander" id="mc14">
@@ -742,7 +764,9 @@
             <p class="nhsuk-hint">Make video and multimedia accessible</p>
             <ul>
                 <li>Check that videos have captions explaining any sound effects and dialogue.</li>
-                <li>Check the quality of these captions is sufficient to portray the same information and message that audio does.</li>
+                <li>Check the quality of these captions is sufficient to portray the same information and message that
+                    audio does.
+                </li>
                 <li>Check that transcripts are provided for any audio content used.</li>
             </ul>
         </div>
@@ -757,10 +781,19 @@
         <div class="nhsuk-details__text">
             <p class="nhsuk-hint">Give users time to read and act</p>
             <ul>
-                <li>If you have a time out setting applied then ensure both visual and non visual users need to be made aware of the timeout period coming to an end.</li>
-                <li>This is in the form of a prompt that will include a timer which will count down the remainder of the timeout session. This is, for example five mins before the end of a 20 minute timeout.</li>
-                <li>You also need to give the user the chance to interact with the webpage to prevent the timeout from happening or be able to extend their session.</li>
-                <li>If the user selects to extend the session or makes an action to stop the time out then the original webpage they were on should appear. The webpage should not be refreshed or changed in any way from what it showed before the timeout.</li>
+                <li>If you have a time out setting applied then ensure both visual and non visual users need to be made
+                    aware of the timeout period coming to an end.
+                </li>
+                <li>This is in the form of a prompt that will include a timer which will count down the remainder of the
+                    timeout session. This is, for example five mins before the end of a 20 minute timeout.
+                </li>
+                <li>You also need to give the user the chance to interact with the webpage to prevent the timeout from
+                    happening or be able to extend their session.
+                </li>
+                <li>If the user selects to extend the session or makes an action to stop the time out then the original
+                    webpage they were on should appear. The webpage should not be refreshed or changed in any way from
+                    what it showed before the timeout.
+                </li>
             </ul>
         </div>
     </details>
@@ -773,7 +806,8 @@
             <strong class="nhsuk-tag nhsuk-tag--white nhsuk-u-float-right" id="mc16Tag"> UNCHECKED </strong>
         </summary>
         <div class="nhsuk-details__text">
-            <p class="nhsuk-hint">Check autocomplete is applied where possible.<br/> Information previously entered by a user is not needing entry again.</p>
+            <p class="nhsuk-hint">Check autocomplete is applied where possible.<br/> Information previously entered by a
+                user is not needing entry again.</p>
             <ul>
                 <li></li>
             </ul>
@@ -788,11 +822,15 @@
             <strong class="nhsuk-tag nhsuk-tag--white nhsuk-u-float-right" id="mc17Tag"> UNCHECKED </strong>
         </summary>
         <div class="nhsuk-details__text">
-            <p class="nhsuk-hint">Check autocomplete is applied where possible.<br/> Information previously entered by a user is not needing entry again.</p>
+            <p class="nhsuk-hint">Check autocomplete is applied where possible.<br/> Information previously entered by a
+                user is not needing entry again.</p>
             <ul>
-                <li>Make sure that users can pause, hide or stop anything that moves, blinks or scrolls automatically and lasts more than 5 seconds.</li>
+                <li>Make sure that users can pause, hide or stop anything that moves, blinks or scrolls automatically
+                    and lasts more than 5 seconds.
+                </li>
                 <li>Pages should not contain anything that flashes more than 3 times in any 1 second.<br/>
-                    Or the flash should be below the general flash and red flash thresholds.</li>
+                    Or the flash should be below the general flash and red flash thresholds.
+                </li>
             </ul>
         </div>
     </details>
@@ -810,6 +848,21 @@
                 <li>Check your service does not use single character keyboard shortcuts.</li>
                 <li>The user has the ability to turn off the keyboard shortcuts.</li>
             </ul>
+            <div class="box">
+                <input type="checkbox" id="show_keyboard_shorcuts" name="show-keyboard-shorcuts"
+                       class="switch-input ext-hidden">
+                <label for="disable_css" class="switch-label">Show key commands:</label>
+                <div class="on-off-spans">
+                    <span class="toggle-off" aria-hidden="true">OFF</span>
+                    <span class="toggle-on" aria-hidden="true">ON</span>
+                </div>
+                <div class="padding-only" id="ext_keyboard_shortcuts">
+                    <strong>List of keyboard shortcuts:</strong>
+                    <ul>
+                        <li>Example<a>Example link to code</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </details>
 
@@ -823,8 +876,26 @@
         <div class="nhsuk-details__text">
             <p class="nhsuk-hint">Do not use "onkeydown" or "onmousedown" for links and buttons</p>
             <ul>
-                <li>Otherwise right mouse click > View Page Source > do a search for mouseup and mousedown. If any are found then these need to analysed for scope of use.</li>
+                <li><s>Otherwise right mouse click > View Page Source > do a search for mouseup and mousedown. If any
+                    are
+                    found then these need to analysed for scope of use.</s>
+                </li>
             </ul>
+            <div class="box">
+                <input type="checkbox" id="show_mouse_operations" name="show-mouse-operations"
+                       class="switch-input ext-hidden">
+                <label for="disable_css" class="switch-label">Show mouse commands:</label>
+                <div class="on-off-spans">
+                    <span class="toggle-off" aria-hidden="true">OFF</span>
+                    <span class="toggle-on" aria-hidden="true">ON</span>
+                </div>
+                <div class="padding-only" id="ext_mouse_operations">
+                    <strong>List of mouse commands:</strong>
+                    <ul>
+                        <li>Example<a>Example link to code</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </details>
 
@@ -839,7 +910,9 @@
             <p class="nhsuk-hint">Do not include text in images</p>
             <ul>
                 <li>Check that all your service's images don’t contain text in images.</li>
-                <li>Logo's are exempt but it is good practice to use well defined alt text for logos. For example, the NHSBSA logo used on a lot of services should have alt text “NHS Business Services Authority”.</li>
+                <li>Logo's are exempt but it is good practice to use well defined alt text for logos. For example, the
+                    NHSBSA logo used on a lot of services should have alt text “NHS Business Services Authority”.
+                </li>
             </ul>
 
             <div class="box">
@@ -863,7 +936,9 @@
         <div class="nhsuk-details__text">
             <p class="nhsuk-hint">Do not trigger pop-ups by hover or focus</p>
             <ul>
-                <li>Check that all your product/service's images do not produce pop-ups by field focusing or hovering over fields.</li>
+                <li>Check that all your product/service's images do not produce pop-ups by field focusing or hovering
+                    over fields.
+                </li>
             </ul>
         </div>
     </details>
@@ -878,7 +953,9 @@
         <div class="nhsuk-details__text">
             <p class="nhsuk-hint">Do not play audio automatically</p>
             <ul>
-                <li>Check your service does not play sound or audio automatically by turning on the speakers and navigating through the system both by mouse and keyboard.</li>
+                <li>Check your service does not play sound or audio automatically by turning on the speakers and
+                    navigating through the system both by mouse and keyboard.
+                </li>
                 <li>If the service does have audio then means to control the audio is available.</li>
             </ul>
         </div>
@@ -887,14 +964,16 @@
     <details class="nhsuk-details nhsuk-expander" id="mc23">
         <summary class="nhsuk-details__summary">
     <span class="nhsuk-details__summary-text">
-      MC23 Touch / pointer gestures
+      MC23 Touch gestures
     </span>
             <strong class="nhsuk-tag nhsuk-tag--white nhsuk-u-float-right" id="mc23Tag"> UNCHECKED </strong>
         </summary>
         <div class="nhsuk-details__text">
             <p class="nhsuk-hint">Do not rely on touch gestures</p>
             <ul>
-                <li>Check your service does not rely on touch inputs or screens. If they do or any part of the system does then an alternative should be available for use.</li>
+                <li>Check your service does not rely on touch inputs or screens. If they do or any part of the system
+                    does then an alternative should be available for use.
+                </li>
             </ul>
         </div>
     </details>
@@ -909,7 +988,9 @@
         <div class="nhsuk-details__text">
             <p class="nhsuk-hint">Do not rely on motion sensors</p>
             <ul>
-                <li>Check your service does not rely on motion sensors. If they do then there should be a way to disable and alternatives to using this method.</li>
+                <li>Check your service does not rely on motion sensors. If they do then there should be a way to disable
+                    and alternatives to using this method.
+                </li>
             </ul>
         </div>
     </details>
@@ -948,7 +1029,9 @@
         <div class="nhsuk-details__text">
             <p class="nhsuk-hint">Check that instructions are styled properly.</p>
             <ul>
-                <li>Check for any of these instances in the website especially with links. Click here is a particularly bad example.</li>
+                <li>Check for any of these instances in the website especially with links. Click here is a particularly
+                    bad example.
+                </li>
             </ul>
         </div>
     </details>
@@ -976,8 +1059,39 @@
         <div class="nhsuk-details__text">
             <p class="nhsuk-hint">Check functionality with Java script turned off</p>
             <ul>
-                <li></li>
+                <strong>Using the Web Developer plugin click Disable Java script from the Disable menu
+                    option. Then refresh the webpage.</strong>
+                <li>Check all of the core functionality of the webpage can still be carried out and is not impeded in
+                    any way by only using the mouse.
+                </li>
+                <li>Check all of the core functionality of the webpage can still be carried out and is not impeded in
+                    any way by only using the keyboard.
+                </li>
+                <li>Check no extra elements like extra icons, missing images, boxes or fields impede the user in any
+                    way. This includes with the use of assistive technologies (screen readers and speech recognition
+                    software).
+                </li>
             </ul>
+
+
+            <div class="box">
+                <h3>How to disable javascript</h3>
+                <ul>
+                    <li>Open Chrome DevTools.</li>
+                    <li>Depending on your operating system, press one of the following: On Window or Linux, Control +
+                        Shift + P. On MacOS, Command + Shift + P. The Command Menu opens.
+                    </li>
+                    <li>Start typing javascript , select Disable JavaScript, and then press Enter to run the command.
+                        JavaScript is now disabled.
+                    </li>
+                </ul>
+            </div>
+
+            Open Chrome DevTools.
+            Depending on your operating system, press one of the following: On Window or Linux, Control + Shift + P. On
+            MacOS, Command + Shift + P. The Command Menu opens.
+            Start typing javascript , select Disable JavaScript, and then press Enter to run the command. JavaScript is
+            now disabled.
         </div>
     </details>
 
@@ -1021,7 +1135,16 @@
         <div class="nhsuk-details__text">
             <p class="nhsuk-hint">Check all dragging operations can be completed by a single pointer</p>
             <ul>
-                <li>Check if any of the above apply in your website and that alternatives are provided.</li>
+                Good examples:
+                <li>sliders or scrollbars that have plus and minus buttons allowing the functionality of the slider.
+                </li>
+                <li>Drag and drop features that allow the browse files button to select the files.</li>
+            </ul>
+            <ul>
+                Bad examples:
+                <li>Drag and drop features that only allowing dragging of files into a predefined space, with no
+                    alternatives.
+                </li>
             </ul>
         </div>
     </details>
@@ -1035,7 +1158,9 @@
         <div class="nhsuk-details__text">
             <p class="nhsuk-hint">Check the size of pointer input target areas</p>
             <ul>
-                <li>Check the target does not overlap any other target and has a target offset of at least 24 CSS pixels to every adjacent target.</li>
+                <li>Check the target does not overlap any other target and has a target offset of at least 24 CSS pixels
+                    to every adjacent target.
+                </li>
             </ul>
         </div>
     </details>
@@ -1051,8 +1176,12 @@
             <p class="nhsuk-hint">In focus content is not obscured</p>
             <ul>
                 <li>Completely hidden, masked or obscured then this is a total failure (High Severity Defect).</li>
-                <li>Not entirely hidden, masked or obscured then this is ‘AA’ compliant (Low Severity Defect – low as elements should not have any disruptions at all to be fully accessible.</li>
-                <li>No part is hidden, masked or obscured then this is ‘AAA’ compliant. This is perfect and full accessible to users.</li>
+                <li>Not entirely hidden, masked or obscured then this is ‘AA’ compliant (Low Severity Defect – low as
+                    elements should not have any disruptions at all to be fully accessible.
+                </li>
+                <li>No part is hidden, masked or obscured then this is ‘AAA’ compliant. This is perfect and full
+                    accessible to users.
+                </li>
             </ul>
         </div>
     </details>

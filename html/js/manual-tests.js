@@ -63,7 +63,8 @@ window.addEventListener("load", (event) => {
         const response = await chrome.runtime.sendMessage({message: "showSkipLink"});
     })();
 
-
+    //MC8 Labels
+    /** MC8 NOT WORKIGN YET **/
     (async () => {
         const response = await chrome.runtime.sendMessage({message: "showLabel"});
     })();
@@ -88,11 +89,13 @@ window.addEventListener("load", (event) => {
     (async () => {
         const response = await chrome.runtime.sendMessage({message: "showImageAltText"});
     })();
+
     //MC21 Hover over / pop ups
     /** MC21 NOT WORKIGN YET **/
     (async () => {
         const response = await chrome.runtime.sendMessage({message: "showPopUps"});
     })();
+
     //MC22 Automatic audio
     (async () => {
         const response = await chrome.runtime.sendMessage({message: "showAudios"});
@@ -105,8 +108,22 @@ window.addEventListener("load", (event) => {
     (async () => {
         const response = await chrome.runtime.sendMessage({message: "showMotionGestures"});
     })();
+
     //MC25 Disabling css styling
     //-- Don't call on load only when clicked as this is always a check
+
+    //MC26 Motion gestures
+    (async () => {
+        const response = await chrome.runtime.sendMessage({message: "showInstructionStyling"});
+    })();
+
+    //MC28 Non JavaScript
+    //-- Don't call on load only when clicked as this is always a check
+
+    //MC31 Motion gestures
+    (async () => {
+        const response = await chrome.runtime.sendMessage({message: "showDraggingMovements"});
+    })();
 
 
     chrome.runtime.onMessage.addListener(
@@ -167,6 +184,16 @@ window.addEventListener("load", (event) => {
             if(request.testName ==="mc24"){
                 console.log("Do mc test 24");
                 testResultsRender(request.testResult, 24, mc24Li, mc24Tag,'MC24 Motion gestures')
+            }
+            //MC26 Instruction styling
+            if(request.testName ==="mc26"){
+                console.log("Do mc test 26");
+                testResultsRender(request.testResult, 26, mc26Li, mc26Tag,'MC26 Instruction styling')
+            }
+            //MC31 Dragging movements
+            if(request.testName ==="mc31"){
+                console.log("Do mc test 31");
+                testResultsRender(request.testResult, 31, mc31Li, mc31Tag,'MC31 Dragging movements')
             }
 
             testsPassedId.innerHTML = testsPassed + " Passed ";

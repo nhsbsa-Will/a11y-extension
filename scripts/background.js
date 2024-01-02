@@ -226,6 +226,20 @@ chrome.action.onClicked.addListener(async (tab) => {
                         });
                     }
 
+                    if (request.message === "showInstructionStyling") {
+                        chrome.scripting.executeScript({
+                            target: {tabId: tab.id, allFrames: true},
+                            files: ["scripts/showInstructionStyling.js"]
+                        });
+                    }
+
+                    if (request.message === "showDraggingMovements") {
+                        chrome.scripting.executeScript({
+                            target: {tabId: tab.id, allFrames: true},
+                            files: ["scripts/showDraggingMovements.js"]
+                        });
+                    }
+
 
                 }
             );
