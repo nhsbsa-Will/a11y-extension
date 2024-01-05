@@ -35,14 +35,22 @@ chrome.action.onClicked.addListener(async (tab) => {
                     iframe.setAttribute('id', 'cm-frame');
                     iframe.setAttribute(
                         'style',
-                        'width: 380px; height: 100%; float: left; position: fixed; border: none; z-index: 2147483646; top: 0px; left: 0px;'
+                        'width: 380px; height: 100%; float: left; position: fixed; ' +
+                        'border: none; z-index: 2147483646; top: 0px; left: 0px;'
                     );
                     iframe.setAttribute('nuan_newframe', "true");
                     iframe.setAttribute('allow', '');
                     iframe.src = chrome.runtime.getURL('html/manual-tests.html');
 
                     document.body.appendChild(iframe);
+
+                    // append style to body
+                    document.body.classList.add("ext_body");
                 },
+            });
+            chrome.scripting.insertCSS({
+                target: {tabId: tab.id, allFrames: true},
+                files: ["css/panel.css"]
             });
 
             // const functionToExecute = () => { document.title };
@@ -175,6 +183,17 @@ chrome.action.onClicked.addListener(async (tab) => {
                         //   target: { tabId: tab.id, allFrames : true },
                         //   files: ["css/panel.css"]
                         // });
+                    }
+
+                    if (request.message === "showHeaders") {
+                        chrome.scripting.executeScript({
+                            target: {tabId: tab.id, allFrames: true},
+                            files: ["scripts/showHeaders.js"]
+                        });
+                        chrome.scripting.insertCSS({
+                          target: { tabId: tab.id, allFrames : true },
+                          files: ["css/panel.css"]
+                        });
                     }
 
                     if (request.message === "showMouseOperations") {

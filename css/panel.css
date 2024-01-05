@@ -189,6 +189,42 @@ header {
 
 /*** bespoke css for ***/
 
+.ext_body{
+    float: right;
+    width: 80%;
+}
+
+@media screen and (max-width: 1800px) {
+    .ext_body {
+        width: 75%;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .ext_body {
+        width: 65%;
+    }
+}
+
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 600px) {
+    .ext_body {
+        width: 35%;
+    }
+}
+
+.ext_headers{
+ background: #ffeb3b;
+}
+
+.ext_header_tag{
+    margin:10px -50px;
+    float: left;
+}
+
+
+
+
 /* redBold for highlighting hidden text */
 .ext_showhidden{
     color : red !important;

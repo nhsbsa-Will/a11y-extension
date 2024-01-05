@@ -1,28 +1,120 @@
 //Number of tests
 const NumberOfTest = 32;
+const testName = ["",
+    "MC1 Screen orientation",
+    "MC2 Navigation",
+    "MC3 Language",
+    "MC4 Skip links",
+    "MC5 Headings",
+    "MC6 Keyboard only",
+    "MC7 Zoom and resizing",
+    "MC8 Labels",
+    "MC9 Links",
+    "MC10 Errors",
+    "MC11 Use of colour",
+    "MC12 Urls",
+    "MC13 Tab indexes",
+    "MC14 Video / audio content",
+    "MC15 Times outs",
+    "MC16 Auto complete & redundant entry",
+    "MC17 Flash & animations",
+    "MC18 Keyboard shortcuts",
+    "MC19 Mouse operations",
+    "MC20 Text in images",
+    "MC21 Hover over / pop ups",
+    "MC22 Automatic audio",
+    "MC23 Touch / pointer gestures",
+    "MC24 Motion gestures",
+    "MC25 Disabling Css styling",
+    "MC26 Instruction styling",
+    "MC27 Page titles",
+    "MC28 Non java script",
+    "MC29 Website help features",
+    "MC30 Authentication",
+    "MC31 Dragging movements",
+    "MC32 Target size",
+    "MC33 Focus not obscured"
+
+]
 //For Dom elements Mc1Link, Mc1Li, Mc1Tag
 let linkArray = [];
 let liArray = [];
 let tagArray = [];
 
-for (let i=1; i < NumberOfTest; i++) {
-    linkArray[ "mc"+i+"Link" ] = document.getElementById('mc'+i+'Link');
-    linkArray[ "mc"+i+"Link" ].addEventListener('click', () => {
-        document.getElementById("mc"+i ).open = true;
+for (let i = 1; i < NumberOfTest; i++) {
+    linkArray["mc" + i + "Link"] = document.getElementById('mc' + i + 'Link');
+    linkArray["mc" + i + "Link"].addEventListener('click', () => {
+        document.getElementById("mc" + i).open = true;
     })
-    liArray[ "mc"+i+"Li" ] = document.getElementById('mc'+i+'Li');
-    tagArray[ "mc"+i+"Tag" ] = document.getElementById('mc'+i+'Tag');
+    liArray["mc" + i + "Li"] = document.getElementById('mc' + i + 'Li');
+    tagArray["mc" + i + "Tag"] = document.getElementById('mc' + i + 'Tag');
 }
 
 //Tests passed counters and Dom elements
-let testsPassed =0;
+let testsPassed = 0;
 let testsPassedId = document.getElementById('testsPassed');
-let testsFailed =0;
+let testsFailed = 0;
 let testsFailedId = document.getElementById('testsFailed');
-let testsNa =0;
+let testsNa = 0;
 let testsNaId = document.getElementById('testsNa');
-let testsCheck =0;
+let testsCheck = 0;
 let testsCheckTestedId = document.getElementById('testsCheck');
+
+// For test results to show
+let testResultsPassed = document.getElementById('testResultsPassed');
+let testResultsFailed = document.getElementById('testResultsFailed');
+let testResultsNA = document.getElementById('testResultsNA');
+let testResultsCheck = document.getElementById('testResultsCheck');
+testResultsPassed.addEventListener('click', () => {
+    console.log("show PASSED test results");
+    renderTestResultsList("Pass");
+});
+testResultsFailed.addEventListener('click', () => {
+    console.log("show FAILED test results");
+    renderTestResultsList("Fail");
+});
+testResultsNA.addEventListener('click', () => {
+    console.log("show N/A test results");
+    renderTestResultsList("N/A");
+});
+
+testResultsCheck.addEventListener('click', () => {
+    console.log("show CHECK NEEDED test results");
+    renderTestResultsList("Check");
+});
+
+function renderTestResultsList(resultRequested) {
+
+    asynMethodsCalls();
+
+    chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+        for (let i = 1; i < NumberOfTest; i++) {
+            let curTest = "mc" + i;
+            console.log("Current test >>> ", curTest);
+            if (request.testName === curTest) {
+                console.log("Check that curTest === request.testName");
+                if (request.testResult === resultRequested) {
+                    testResultsRender(request.testResult, i, liArray[i], tagArray[i], testName[i])
+                }
+
+                if (request.testResult === "all") {
+                    testResultsRender(request.testResult, i, liArray[i], tagArray[i], testName[i])
+                }
+
+            }
+        }
+        testsPassedId.innerHTML = testsPassed + " Passed ";
+        testsFailedId.innerHTML = testsFailed + " Failed ";
+        testsNaId.innerHTML = testsNa + " Not applicable ";
+        testsCheckTestedId.innerHTML = testsCheck + " Checks required ";
+    })
+
+    //MC25 Disabling css - this is always a check as feature needs clicking!
+    testResultsRender("Check", 25, mc25Li, mc25Tag, 'MC25 Disable css styling')
+
+    //MC28 Non java script - this is always a check as feature needs clicking maybe ???
+    testResultsRender("Check", 28, mc28Li, mc28Tag, 'MC28 Non java script')
+}
 
 //Sliders and buttons for individual test features
 let btn = document.getElementById('btn');
@@ -45,15 +137,117 @@ let showButtonSpacing = document.getElementById('show_button_spacing');
 let showTabIndex = document.getElementById('show_tab_index');
 let tabIndex = document.getElementById('ext_tab_index');
 
+let showHeadings = document.getElementById('show_headings');
+let headings = document.getElementById('ext_headers');
 
 let disableCssButton = document.getElementById('disable_css');
 
-const exportToExcel = document.getElementById('export_to_excel');
+let exportToExcel = document.getElementById('export_to_excel');
 
 
 //Test all tests as you open the browser extension
 window.addEventListener("load", (event) => {
 
+    asynMethodsCalls();
+
+    chrome.runtime.onMessage.addListener(
+        function (request, sender, sendResponse) {
+
+            //MC3 Language
+            if (request.testName === "mc3") {
+                console.log("Do mc test 3");
+                testResultsRender(request.testResult, 3, mc3Li, mc3Tag, testName[3])
+            }
+            //MC4 Skip links
+            if (request.testName === "mc4") {
+                console.log(request)
+                console.log("Do mc test 4");
+                testResultsRender(request.testResult, 4, mc4Li, mc4Tag, testName[4])
+            }
+            //MC5 Headings
+            if (request.testName === "mc5") {
+                console.log("Do mc test 5");
+                testResultsRender(request.testResult, 5, mc5Li, mc5Tag, testName[5])
+            }
+            //MC8 Labels
+            if (request.testName === "mc8") {
+                console.log(request)
+                console.log("Do mc test 8");
+                testResultsRender(request.testResult, 8, mc8Li, mc8Tag, testName[8])
+            }
+            //MC13 Tab indexes
+            if (request.testName === "mc13") {
+                console.log("Do mc test 13");
+                testResultsRender(request.testResult, 13, mc13Li, mc13Tag, testName[13])
+            }
+            //MC14 Video / audio content
+            if (request.testName === "mc14") {
+                console.log("Do mc test 14");
+                testResultsRender(request.testResult, 14, mc14Li, mc14Tag, testName[14])
+            }
+            //MC18 Keyboard shortcuts
+            if (request.testName === "mc18") {
+                console.log("Do mc test 18");
+                testResultsRender(request.testResult, 18, mc18Li, mc18Tag, testName[18])
+            }
+            //MC19 Mouse operations
+            if (request.testName === "mc19") {
+                console.log("Do mc test 19");
+                testResultsRender(request.testResult, 19, mc19Li, mc19Tag, testName[19])
+            }
+            //MC20 Text in images
+            if (request.testName === "mc20") {
+                console.log("Do mc test 20");
+                testResultsRender(request.testResult, 20, mc20Li, mc20Tag, testName[20])
+            }
+            //MC21 Hover over / pop ups
+            if (request.testName === "mc21") {
+                console.log("Do mc test 21 NOT COMPLETE YET!!!");
+                testResultsRender(request.testResult, 21, mc21Li, mc21Tag, testName[21])
+            }
+            //MC22 Automatic audio
+            if (request.testName === "mc22") {
+                console.log("Do mc test 20");
+                testResultsRender(request.testResult, 22, mc22Li, mc22Tag, testName[22])
+            }
+            //MC23 Touch / pointer gestures
+            if (request.testName === "mc23") {
+                console.log("Do mc test 23");
+                testResultsRender(request.testResult, 23, mc23Li, mc23Tag, testName[23])
+            }
+            //MC24 Motion gestures
+            if (request.testName === "mc24") {
+                console.log("Do mc test 24");
+                testResultsRender(request.testResult, 24, mc24Li, mc24Tag, testName[24])
+            }
+            //MC26 Instruction styling
+            if (request.testName === "mc26") {
+                console.log("Do mc test 26");
+                testResultsRender(request.testResult, 26, mc26Li, mc26Tag, testName[26])
+            }
+            //MC31 Dragging movements
+            if (request.testName === "mc31") {
+                console.log("Do mc test 31");
+                testResultsRender(request.testResult, 31, mc31Li, mc31Tag, testName[31])
+            }
+
+            testsPassedId.innerHTML = testsPassed + " Passed ";
+            testsFailedId.innerHTML = testsFailed + " Failed ";
+            testsNaId.innerHTML = testsNa + " Not applicable ";
+            testsCheckTestedId.innerHTML = testsCheck + " Checks required ";
+        })
+
+    //MC25 Disabling css - this is always a check as feature needs clicking!
+    testResultsRender("Check", 25, mc25Li, mc25Tag, testName[25])
+
+    //MC28 Non java script - this is always a check as feature needs clicking maybe ???
+    testResultsRender("Check", 28, mc28Li, mc28Tag, testName[28])
+
+
+});
+
+function asynMethodsCalls(){
+    console.log("AsynMethodcalls here!");
     //MC3 Language
     (async () => {
         const response = await chrome.runtime.sendMessage({message: "showLanguage"});
@@ -62,13 +256,14 @@ window.addEventListener("load", (event) => {
     (async () => {
         const response = await chrome.runtime.sendMessage({message: "showSkipLink"});
     })();
-
+    //MC5 Headings
+    (async () => {
+        const response = await chrome.runtime.sendMessage({message: "showHeaders"});
+    })();
     //MC8 Labels
-    /** MC8 NOT WORKIGN YET **/
     (async () => {
         const response = await chrome.runtime.sendMessage({message: "showLabel"});
     })();
-
     //MC13 Tab indexes
     (async () => {
         const response = await chrome.runtime.sendMessage({message: "showTabIndex"});
@@ -124,93 +319,7 @@ window.addEventListener("load", (event) => {
     (async () => {
         const response = await chrome.runtime.sendMessage({message: "showDraggingMovements"});
     })();
-
-
-    chrome.runtime.onMessage.addListener(
-        function (request, sender, sendResponse) {
-
-            //MC3 Language
-            if(request.testName ==="mc3"){
-                console.log("Do mc test 3");
-                testResultsRender(request.testResult, 3, mc3Li, mc3Tag,'MC3 Language')
-            }
-            //MC4 Skip links
-            if(request.testName ==="mc4"){
-                console.log(request)
-                console.log("Do mc test 4");
-                testResultsRender(request.testResult, 4, mc4Li, mc4Tag,'MC4 Skip links')
-            }
-            //MC13 Tab indexes
-            if(request.testName ==="mc13"){
-                console.log("Do mc test 13");
-                testResultsRender(request.testResult, 13, mc13Li, mc13Tag,'MC13 Tab indexes')
-            }
-            //MC14 Video / audio content
-            if(request.testName ==="mc14"){
-                console.log("Do mc test 14");
-                testResultsRender(request.testResult, 14, mc14Li, mc14Tag,'MC14 Video / audio content')
-            }
-            //MC18 Keyboard shortcuts
-            if(request.testName ==="mc18"){
-                console.log("Do mc test 18");
-                testResultsRender(request.testResult, 18, mc18Li, mc18Tag,'MC18 Keyboard shortcuts')
-            }
-            //MC19 Mouse operations
-            if(request.testName ==="mc19"){
-                console.log("Do mc test 19");
-                testResultsRender(request.testResult, 19, mc19Li, mc19Tag,'MC19 Mouse operations')
-            }
-            //MC20 Text in images
-            if(request.testName ==="mc20"){
-                console.log("Do mc test 20");
-                testResultsRender(request.testResult, 20, mc20Li, mc20Tag,'MC20 Text in images')
-            }
-            //MC21 Hover over / pop ups
-            if(request.testName ==="mc21"){
-                console.log("Do mc test 21 NOT COMPLETE YET!!!");
-                testResultsRender(request.testResult, 21, mc21Li, mc21Tag,'MC21 Hover over / pop ups')
-            }
-            //MC22 Automatic audio
-            if(request.testName ==="mc22"){
-                console.log("Do mc test 20");
-                testResultsRender(request.testResult, 22, mc22Li, mc22Tag,'MC22 Automatic audio')
-            }
-            //MC23 Touch / pointer gestures
-            if(request.testName ==="mc23"){
-                console.log("Do mc test 23");
-                testResultsRender(request.testResult, 23, mc23Li, mc23Tag,'MC23 Touch gestures')
-            }
-            //MC24 Motion gestures
-            if(request.testName ==="mc24"){
-                console.log("Do mc test 24");
-                testResultsRender(request.testResult, 24, mc24Li, mc24Tag,'MC24 Motion gestures')
-            }
-            //MC26 Instruction styling
-            if(request.testName ==="mc26"){
-                console.log("Do mc test 26");
-                testResultsRender(request.testResult, 26, mc26Li, mc26Tag,'MC26 Instruction styling')
-            }
-            //MC31 Dragging movements
-            if(request.testName ==="mc31"){
-                console.log("Do mc test 31");
-                testResultsRender(request.testResult, 31, mc31Li, mc31Tag,'MC31 Dragging movements')
-            }
-
-            testsPassedId.innerHTML = testsPassed + " Passed ";
-            testsFailedId.innerHTML = testsFailed + " Failed ";
-            testsNaId.innerHTML = testsNa + " Not applicable ";
-            testsCheckTestedId.innerHTML = testsCheck + " Checks required ";
-        })
-
-    //MC25 Disabling css - this is always a check as feature needs clicking!
-    testResultsRender("Check", 25, mc25Li, mc25Tag, 'MC25 Disable css styling')
-
-    //MC28 Non java script - this is always a check as feature needs clicking maybe ???
-    testResultsRender("Check", 28, mc28Li, mc28Tag, 'MC28 Non java script')
-
-
-
-});
+}
 
 //For show hidden text
 // showStyleSwitch.addEventListener('click', () => {
@@ -230,6 +339,18 @@ window.addEventListener("load", (event) => {
 //         })();
 //     }
 // });
+
+//For show / hide Headers
+showHeadings.addEventListener('click', () => {
+    if (showHeadings.checked === true) {
+        (async () => {
+            const response = await chrome.runtime.sendMessage({message: "showHeaders"});
+            // do something with response here, not outside the function
+            // p.innerText = response.showText;
+        })();
+    }
+});
+
 
 //For disabling css
 disableCssButton.addEventListener('click', () => {
@@ -255,29 +376,29 @@ disableCssButton.addEventListener('click', () => {
     }
 });
 //For show html title text
-showHtmlTitle.addEventListener('click', () => {
-    console.log("clicked")
-    if (showHtmlTitle.checked === true) {
-        (async () => {
-            const response = await chrome.runtime.sendMessage({message: "showHtmlTitle"});
-        })();
-
-        //Add event listener to show title js file
-        chrome.runtime.onMessage.addListener(
-            function (request, sender, sendResponse) {
-                if (request.showTitleMessage) {
-                    pageTitle.innerHTML += "<br/><h5>" + request.showTitleMessage + "</h5>";
-                }
-            })
-    } else {
-        (async () => {
-            const response = await chrome.runtime.sendMessage({message: "hideHtmlTitle"});
-            // do something with response here, not outside the function
-            pageTitle.innerHTML = "<br/><h5>" + response.showText + "</h5>";
-            // alert("remove css??");
-        })();
-    }
-});
+// showHtmlTitle.addEventListener('click', () => {
+//     console.log("clicked")
+//     if (showHtmlTitle.checked === true) {
+//         (async () => {
+//             const response = await chrome.runtime.sendMessage({message: "showHtmlTitle"});
+//         })();
+//
+//         //Add event listener to show title js file
+//         chrome.runtime.onMessage.addListener(
+//             function (request, sender, sendResponse) {
+//                 if (request.showTitleMessage) {
+//                     pageTitle.innerHTML += "<br/><h5>" + request.showTitleMessage + "</h5>";
+//                 }
+//             })
+//     } else {
+//         (async () => {
+//             const response = await chrome.runtime.sendMessage({message: "hideHtmlTitle"});
+//             // do something with response here, not outside the function
+//             pageTitle.innerHTML = "<br/><h5>" + response.showText + "</h5>";
+//             // alert("remove css??");
+//         })();
+//     }
+// });
 
 //For show skip link
 showSkipLink.addEventListener('click', () => {
@@ -344,9 +465,9 @@ showImageAltText.addEventListener('click', () => {
         })();
         console.log("clicked image alt text")
         chrome.runtime.onMessage.addListener(
-            function(request, sender, sendResponse) {
-                if (request.showMessage){
-                    imageAltText.innerHTML += "<br/><h5 class='nhs-bright-blue'>"+request.showMessage+"</h5>";
+            function (request, sender, sendResponse) {
+                if (request.showMessage) {
+                    imageAltText.innerHTML += "<br/><h5 class='nhs-bright-blue'>" + request.showMessage + "</h5>";
                 }
             })
     } else {
@@ -355,8 +476,8 @@ showImageAltText.addEventListener('click', () => {
         })();
         console.log("clicked image alt text remove")
         chrome.runtime.onMessage.addListener(
-            function(request, sender, sendResponse) {
-                if (request.showMessage){
+            function (request, sender, sendResponse) {
+                if (request.showMessage) {
                     imageAltText.innerHTML = "";
                 }
             })
@@ -372,9 +493,9 @@ showButtonSpacing.addEventListener('click', () => {
         })();
         console.log("clicked show button spacing")
         chrome.runtime.onMessage.addListener(
-            function(request, sender, sendResponse) {
-                if (request.showMessage){
-                    imageAltText.innerHTML += "<br/><h5 class='nhs-bright-blue'>"+request.showMessage+"</h5>";
+            function (request, sender, sendResponse) {
+                if (request.showMessage) {
+                    imageAltText.innerHTML += "<br/><h5 class='nhs-bright-blue'>" + request.showMessage + "</h5>";
                 }
             })
     }
@@ -409,35 +530,35 @@ showTabIndex.addEventListener('click', () => {
 });
 
 //Export to excel or csv ?? (Later project)
-exportToExcel.addEventListener('click',()=>{
+exportToExcel.addEventListener('click', () => {
     console.log("Export to excel please!!!")
     fnExcelReport();
 })
 
 //Testing method for passing to render method
-function testResultsRender(requestTestResult, testNo, li, tag, linkText){
+function testResultsRender(requestTestResult, testNo, li, tag, linkText) {
     switch (requestTestResult) {
         case "Pass":
-            passedTest(testNo, li, tag,linkText);
-            testsPassed = testsPassed +1;
+            passedTest(testNo, li, tag, linkText);
+            testsPassed = testsPassed + 1;
             break;
         case  "Check":
-            checkTest(testNo, li, tag,linkText);
-            testsCheck = testsCheck +1;
+            checkTest(testNo, li, tag, linkText);
+            testsCheck = testsCheck + 1;
             break;
         case  "N/A":
-            naTest(testNo, li, tag,linkText);
-            testsNa = testsNa +1;
+            naTest(testNo, li, tag, linkText);
+            testsNa = testsNa + 1;
             break;
         default :
-            failedTest(testNo, li, tag,linkText);
-            testsFailed = testsFailed +1;
+            failedTest(testNo, li, tag, linkText);
+            testsFailed = testsFailed + 1;
     }
 }
 
 //Render DOM elements for the test results
-function failedTest(testNo,li,tag,linkText){
-    li.innerHTML = failedTestSvg('mc'+testNo, 'mc'+testNo+'Link', linkText);
+function failedTest(testNo, li, tag, linkText) {
+    li.innerHTML = failedTestSvg('mc' + testNo, 'mc' + testNo + 'Link', linkText);
     tag.classList.remove("nhsuk-tag");
     tag.classList.add("nhsuk-tag", "nhsuk-tag--red");
     tag.innerHTML = "FAIL";
@@ -452,12 +573,13 @@ function failedTestSvg(href, id, linkText) {
         "<span className='nhsuk-hint nhsuk-hint-inline '> (Fail)</span>";
 }
 
-function passedTest(testNo,li,tag,linkText){
-    li.innerHTML = passedTestSvg('mc'+testNo, 'mc'+testNo+'Link', linkText);
+function passedTest(testNo, li, tag, linkText) {
+    li.innerHTML = passedTestSvg('mc' + testNo, 'mc' + testNo + 'Link', linkText);
     tag.classList.remove("nhsuk-tag");
     tag.classList.add("nhsuk-tag", "nhsuk-tag--green");
     tag.innerHTML = "PASS";
 }
+
 function passedTestSvg(href, id, linkText) {
     return "<svg className='nhsuk-icon nhsuk-icon__tick' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' aria-hidden='true' width='34' height='34'>" +
         "<path stroke-width='4' stroke-linecap='round' d='M18.4 7.8l-8.5 8.4L5.6 12' stroke='#007f3b'></path>" +
@@ -466,31 +588,34 @@ function passedTestSvg(href, id, linkText) {
         "<span className='nhsuk-hint nhsuk-hint-inline'> (Pass)</span>";
 }
 
-function naTest(testNo,li,tag,linkText){
-    li.innerHTML = naTestSvg('mc'+testNo, 'mc'+testNo+'Link', linkText);
+function naTest(testNo, li, tag, linkText) {
+    li.innerHTML = naTestSvg('mc' + testNo, 'mc' + testNo + 'Link', linkText);
     tag.classList.remove("nhsuk-tag");
     tag.classList.add("nhsuk-tag");
     tag.innerHTML = "N/A";
 }
+
 function naTestSvg(href, id, linkText) {
-    return "<svg className='nhsuk-icon nhsuk-icon__cross' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden='true' width='34' height='34'>"+
-        "<path stroke='#dbe0e3' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M8 12h8''></path>"+
-        "</svg>"+
+    return "<svg className='nhsuk-icon nhsuk-icon__cross' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden='true' width='34' height='34'>" +
+        "<path stroke='#dbe0e3' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M8 12h8''></path>" +
+        "</svg>" +
         // "<a href='#" + href + "' id='" + id + "'>" + linkText + "</a>" +
         "<span>" + linkText + "</span>" +
         "<span className='nhsuk-hint nhsuk-hint-inline'> (N/A)</span>";
 }
 
-function checkTest(testNo,li,tag,linkText){
-    li.innerHTML = checkTestSvg('mc'+testNo, 'mc'+testNo+'Link', linkText);
+function checkTest(testNo, li, tag, linkText) {
+    li.innerHTML = checkTestSvg('mc' + testNo, 'mc' + testNo + 'Link', linkText);
     tag.classList.remove("nhsuk-tag");
     tag.classList.add("nhsuk-tag", "nhsuk-tag--blue");
     tag.innerHTML = "CHECK";
 }
+
 function checkTestSvg(href, id, linkText) {
-    return "<svg class='nhsuk-icon nhsuk-icon__chevron-right' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden='true' height='34' width='34'>"+
-        "<path d='M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z'></path>"+
-        "</svg>"+
+    return "<svg class='nhsuk-icon nhsuk-icon__chevron-right' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden='true' height='34' width='34'>" +
+        "<path d='M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z'></path>" +
+        "</svg>" +
         "<a href='#" + href + "' id='" + id + "'>" + linkText + "</a>" +
         "<span className='nhsuk-hint nhsuk-hint-inline'> (Check)</span>";
 }
+

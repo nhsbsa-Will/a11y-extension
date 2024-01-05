@@ -60,16 +60,25 @@
     <section>
         <div class="nhsuk-do-dont-list">
             <h3 class="nhsuk-do-dont-list__label">Manual checks results </h3>
-            <p><strong id="testsPassed">32 Passed</strong><br/>
-                <strong id="testsFailed">0 Failed</strong><br/>
-                <strong id="testsNa">0 Not applicable</strong><br/>
+            <p>
+                <strong id="testsPassed">32 Passed</strong>
+                <a href="#testResultsList" id="testResultsPassed">View passed tests</a>
+                <br/>
+                <strong id="testsFailed">0 Failed</strong>
+                <a href="#testResultsList" id="testResultsFailed">View failed tests</a>
+                <br/>
+                <strong id="testsNa">0 Not applicable</strong>
+                <a href="#testResultsList" id="testResultsNA">View N/A tests</a>
+                <br/>
                 <strong id="testsCheck">0 Checks required</strong>
+                <a href="#testResultsList" id="testResultsCheck">View tests requiring checks</a>
             </p>
             <hr aria-hidden="true" class="nhsuk-u-margin-top-0"/>
 
-            <p><strong>Results</strong></p>
+            <p><strong id="testResultsList" >Results</strong></p>
+            <!-- Tailor results based on selected results -->
             <ul class="nhsuk-list nhsuk-list--tick" role="list">
-                <li>
+                <li id="mc1Li">
                     <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                          aria-hidden="true" width="34" height="34">
                         <path stroke="#dbe0e3" stroke-linecap="round" stroke-miterlimit="10"
@@ -78,13 +87,14 @@
                     <a href="#mc1" id="mc1Link">MC1 Screen orientation</a>
                     <span class="nhsuk-hint nhsuk-hint-inline">(Not tested)</span>
                 </li>
-                <li>
-                    <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg"
-                         viewBox="0 0 24 24" aria-hidden="true" height="34" width="34">
-                        <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"></path>
+                <li id="mc2Li">
+                    <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                         aria-hidden="true" width="34" height="34">
+                        <path stroke="#dbe0e3" stroke-linecap="round" stroke-miterlimit="10"
+                              stroke-width="2" d="M8 12h8"></path>
                     </svg>
                     <a href="#mc2" id="mc2Link">MC2 Navigation</a>
-                    <span class="nhsuk-hint nhsuk-hint-inline">(Check)</span>
+                    <span class="nhsuk-hint nhsuk-hint-inline">(Not tested)</span>
                 </li>
                 <li id="mc3Li">
                     <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
@@ -638,6 +648,14 @@
                     This information is then lost when an action or entry is made,
                 </li>
             </ul>
+            <div class="box">
+                <input type="checkbox" id="show_labels" name="show-labels" class="switch-input ext-hidden">
+                <label for="show_labels" class="switch-label">Show labels:</label>
+                <div class="on-off-spans">
+                    <span class="toggle-off" aria-hidden="true">OFF</span>
+                    <span class="toggle-on" aria-hidden="true">ON</span>
+                </div>
+            </div>
         </div>
     </details>
 
@@ -1074,7 +1092,7 @@
             </ul>
 
 
-            <div class="box">
+            <div class="box padding-only">
                 <h3>How to disable javascript</h3>
                 <ul>
                     <li>Open Chrome DevTools.</li>
@@ -1086,12 +1104,6 @@
                     </li>
                 </ul>
             </div>
-
-            Open Chrome DevTools.
-            Depending on your operating system, press one of the following: On Window or Linux, Control + Shift + P. On
-            MacOS, Command + Shift + P. The Command Menu opens.
-            Start typing javascript , select Disable JavaScript, and then press Enter to run the command. JavaScript is
-            now disabled.
         </div>
     </details>
 
